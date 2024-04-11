@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">SpeedyBuy</string>
+    <string name="ic_poweredby_text">Powered by\nSonu coding</string>
+    <string name="backround_image_discription">backround</string>
+    <string name="ic_explore_the_app">Explore the app</string>
+    <string name="Lorem">Discover a vast array of incredible products and exclusive deals catered to your tastes and needs. Explore a world of possibilities and find exactly what you\'re looking for, from the latest trends to timeless classics.</string>
+    <string name="lets_start">Lets Start</string>
+    <string name="login_text">Login</string>
+    <string name="welcome_users">Welcome Users</string>
+    <string name="app_first_name">Speedy</string>
+    <string name="buy">Buy</string>
+    <string name="forget_password">Forget Password ?</string>
+    <string name="sign_up_text">Or sign up with</string>
+    <string name="email_hints">User id</string>
+    <string name="not_register_yet">Not register yet ?</string>
+    <string name="create_account">Create Account</string>
+    <string name="password">Password</string>
+    <string name="Edit_enter_password">Enter Your Password</string>
+    <string name="example_123gmail_com">example@123gmail.com</string>
+    <string name="default_web_client_id">952695631712-7g941driadhf57jmk2rsos171oiogoam.apps.googleusercontent.com</string>
+    <string name="home">Home</string>
+    <string name="wishlist">Wishlist</string>
+    <string name="shop">Cart</string>
+    <string name="search">Search</string>
+    <string name="setting">Setting</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_description">Mens Starry Sky Printed Shirt 100% Cotton Fabric</string>
+    <string name="price">₹399</string>
+    <string name="product">Product</string>
+    <string name="heading">Mens Starry</string>
+    <string name="log_out_btn">Log out</string>
+    <string name="email_example">santosh975635@gmail.com</string>
+    <string name="headiing_email">Email Address</string>
+    <string name="user_name">santosh</string>
+    <string name="headind_name">Name</string>
+    <string name="personal_details">Personal Details</string>
+</resources>

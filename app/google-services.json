@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "952695631712",
+    "firebase_url": "https://speedybuy-c8339-default-rtdb.firebaseio.com",
+    "project_id": "speedybuy-c8339",
+    "storage_bucket": "speedybuy-c8339.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:952695631712:android:82dec161df210cecd47805",
+        "android_client_info": {
+          "package_name": "com.example.speedybuy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "952695631712-gbagqi6nm9gidsj1l02l0uou0rguqsk7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.speedybuy",
+            "certificate_hash": "39cf0d9ade2f7fee6d053e93505d5b5ae7975361"
+          }
+        },
+        {
+          "client_id": "952695631712-7g941driadhf57jmk2rsos171oiogoam.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjccSzRFjpCJZAE8mIW7JXsK-H2oZzFbs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "952695631712-7g941driadhf57jmk2rsos171oiogoam.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

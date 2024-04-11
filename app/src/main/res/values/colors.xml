@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#ffc600</color>
+    <color name="appnav">#EB3030</color>
+    <color name="second_container">#8092F69F</color>
+    <color name="rating_bar">#4CAF50</color>
+</resources>

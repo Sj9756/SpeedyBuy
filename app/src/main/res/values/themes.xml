@@ -1,0 +1,20 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.SpeedyBuy" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+    <style name="Theme.SpeedyBuy" parent="Base.Theme.SpeedyBuy" />
+
+    <style name="Widget.App.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <item name="colorSurfaceContainer">@color/white</item>
+        <item name="colorOnSecondaryContainer">@color/appnav</item>
+        <item name="colorSecondaryContainer">@color/second_container</item>
+
+    </style>
+
+</resources>
