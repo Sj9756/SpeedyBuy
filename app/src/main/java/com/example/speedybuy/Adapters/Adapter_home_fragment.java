@@ -1,6 +1,7 @@
 package com.example.speedybuy.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +15,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.speedybuy.Items_discription;
 import com.example.speedybuy.R;
 
 import java.util.ArrayList;
 
 class ViewHolder extends RecyclerView.ViewHolder {
+
+
     GridLayout grid_items;
     ImageView product;
     TextView heading, subheading, price;
@@ -37,6 +41,11 @@ class ViewHolder extends RecyclerView.ViewHolder {
 }
 
 public class Adapter_home_fragment extends RecyclerView.Adapter<ViewHolder> {
+    public static final String imageUrl="imageUrl";
+    public static final  String heading_text="heading_text";
+    public static final String subheading_text="subheading_text";
+    public static final  String price_text="price_text";
+    public static final  String rating_text="rating_text";
     ArrayList<Items_list> itemems;
 
     Context context;
@@ -60,7 +69,6 @@ public class Adapter_home_fragment extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
         Items_list currentItem = filteredItemList.get(position);
         holder.heading.setText(currentItem.heading);
         holder.subheading.setText(currentItem.subheading);
@@ -71,7 +79,13 @@ public class Adapter_home_fragment extends RecyclerView.Adapter<ViewHolder> {
         holder.grid_items.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent =new Intent(context,Items_discription.class);
+                intent.putExtra(imageUrl,currentItem.imageUrl);
+                intent.putExtra(heading_text,currentItem.heading);
+                intent.putExtra(subheading_text,currentItem.subheading);
+                intent.putExtra(price_text,currentItem.price);
+                intent.putExtra(rating_text,currentItem.setRating);
+                context.startActivity(intent);
             }
         });
 

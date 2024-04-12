@@ -41,6 +41,6 @@ public class Adapter_wishlist_fragment extends RecyclerView.Adapter<ViewHolderWi
 
     @Override
     public int getItemCount() {
-        return 1;
+        return itemsLists.size();
     }
 }

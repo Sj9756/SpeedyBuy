@@ -18,12 +18,12 @@ import java.util.ArrayList;
 
 
 public class Fragment_wishlist extends Fragment {
-ArrayList<Items_list>itemsLists=new ArrayList<>();
+public ArrayList<Items_list>itemsLists=new ArrayList<>();
 RecyclerView recyclerView_wishlist;
 
 
     public Fragment_wishlist() {
-        // Required empty public constructor
+
     }
 
 
@@ -37,4 +37,5 @@ RecyclerView recyclerView_wishlist;
         recyclerView_wishlist.setAdapter(ad);
         return view;
     }
+
 }

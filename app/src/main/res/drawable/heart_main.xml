@@ -3,4 +3,5 @@
     <item android:drawable="@drawable/heart_pressed"
         android:state_selected="true"/>
     <item android:drawable="@drawable/heart_unpressed" />
+
 </selector>

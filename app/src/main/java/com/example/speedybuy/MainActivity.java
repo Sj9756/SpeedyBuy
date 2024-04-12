@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getFragment(@NonNull Class<? extends androidx.fragment.app.Fragment> fragmentClass) {
+
         getSupportFragmentManager().beginTransaction()
                 .setReorderingAllowed(true)
                 .add(R.id.fragment_loader, fragmentClass, null)
