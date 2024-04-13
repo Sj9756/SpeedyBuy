@@ -76,16 +76,14 @@ public class Fragment_home extends Fragment {
         String url8="https://rukminim2.flixcart.com/image/832/832/xif0q/t-shirt/m/i/r/l-kb2k-ronaldotop-7-2021manchesterred-privic-original-imagybcx8wbwxpub.jpeg?q=70&crop=false";
 
 
-
-
-        Items_list List1=new Items_list("Bullmer ","Men Regular Fit Printed Spread Collar Casual Shirt  (Pack of 2)","₹423",2.5f,url);
-        Items_list List2=new Items_list("Allen Solly","Men Regular Fit Printed Spread Collar Casual Shirt  (Pack of 2)","₹523",5f,url1);
-        Items_list List3=new Items_list("EyeBogler","Men Regular Fit Printed Spread Collar Casual Shirt  (Pack of 2)","₹483",1.5f,url2);
-        Items_list List4=new Items_list("sti","Men Regular Fit Printed Spread Collar Casual Shirt  (Pack of 2)","₹312",3.5f,url3);
-        Items_list List5=new Items_list("KAJARU","Men Regular Fit Printed Spread Collar Casual Shirt  (Pack of 2)","₹4783",4.5f,url4);
-        Items_list List6=new Items_list("Blue dove","Men Regular Fit Printed Spread Collar Casual Shirt  (Pack of 2)","₹523",0.5f,url5);
-        Items_list List7=new Items_list("Praizy","Men Regular Fit Printed Spread Collar Casual Shirt  (Pack of 2)","₹4523",2.5f,url6);
-        Items_list List8=new Items_list("AUSK ","Men Regular Fit Printed Spread Collar Casual Shirt  (Pack of 2)","₹4853",1.5f,url7);
+        Items_list List1=new Items_list(url,"BABE","Men Regular Fit Printed Spread Collar Casual Shirt  (Pack of 2)","₹423",2.5f);
+        Items_list List2=new Items_list(url1,"Allen Solly","Men Regular Fit Printed Spread Collar Casual Shirt  (Pack of 2)","₹523",5f);
+        Items_list List3=new Items_list(url2,"EyeBogler","Men Regular Fit Printed Spread Collar Casual Shirt  (Pack of 2)","₹483",1.5f);
+        Items_list List4=new Items_list(url3,"sti","Men Regular Fit Printed Spread Collar Casual Shirt  (Pack of 2)","₹312",3.5f);
+        Items_list List5=new Items_list(url4,"KAJARU","Men Regular Fit Printed Spread Collar Casual Shirt  (Pack of 2)","₹4783",4.5f);
+        Items_list List6=new Items_list(url5,"Blue dove","Men Regular Fit Printed Spread Collar Casual Shirt  (Pack of 2)","₹523",0.5f);
+        Items_list List7=new Items_list(url6,"Praizy","Men Regular Fit Printed Spread Collar Casual Shirt  (Pack of 2)","₹4523",2.5f);
+        Items_list List8=new Items_list(url7,"AUSK ","Men Regular Fit Printed Spread Collar Casual Shirt  (Pack of 2)","₹4853",1.5f);
 
         itemems.add(List1);
         itemems.add(List2);

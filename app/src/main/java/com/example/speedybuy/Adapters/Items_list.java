@@ -1,15 +1,12 @@
 package com.example.speedybuy.Adapters;
 
 public class Items_list {
-    String heading;
-    String subheading;
-    String price;
-    float setRating;
-    String imageUrl;
-
-
-
-    public Items_list(String heading, String subheading, String price, float setRating,String imageUrl) {
+    public String imageUrl;
+  public   String heading;
+   public String subheading;
+   public String price;
+  public   float setRating;
+    public Items_list(String imageUrl,String heading, String subheading, String price, float setRating) {
         this.heading = heading;
         this.subheading = subheading;
         this.price = price;

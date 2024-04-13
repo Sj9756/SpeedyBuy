@@ -21,8 +21,6 @@ import com.example.speedybuy.R;
 import java.util.ArrayList;
 
 class ViewHolder extends RecyclerView.ViewHolder {
-
-
     GridLayout grid_items;
     ImageView product;
     TextView heading, subheading, price;
@@ -46,6 +44,7 @@ public class Adapter_home_fragment extends RecyclerView.Adapter<ViewHolder> {
     public static final String subheading_text="subheading_text";
     public static final  String price_text="price_text";
     public static final  String rating_text="rating_text";
+    public static final  String index="position";
     ArrayList<Items_list> itemems;
 
     Context context;
@@ -80,6 +79,7 @@ public class Adapter_home_fragment extends RecyclerView.Adapter<ViewHolder> {
             @Override
             public void onClick(View v) {
                 Intent intent =new Intent(context,Items_discription.class);
+                intent.putExtra(index,holder.getAdapterPosition());
                 intent.putExtra(imageUrl,currentItem.imageUrl);
                 intent.putExtra(heading_text,currentItem.heading);
                 intent.putExtra(subheading_text,currentItem.subheading);

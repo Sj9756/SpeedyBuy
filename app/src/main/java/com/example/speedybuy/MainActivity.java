@@ -3,9 +3,14 @@ package com.example.speedybuy;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
+import com.example.speedybuy.Adapters.Items_list;
+import com.example.speedybuy.database.Database_items;
 import com.example.speedybuy.fragmants.Fragment_home;
 import com.example.speedybuy.fragmants.Fragment_search;
 import com.example.speedybuy.fragmants.Fragment_setting;
@@ -13,12 +18,12 @@ import com.example.speedybuy.fragmants.Fragment_wishlist;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.util.ArrayList;
+import java.util.Stack;
+
 
 public class MainActivity extends AppCompatActivity {
-
     BottomNavigationView bottomNavigationView;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,22 +38,15 @@ public class MainActivity extends AppCompatActivity {
                     getFragment(Fragment_home.class);
                 } else if (R.id.navigation_wishlist == id) {
                     getFragment(Fragment_wishlist.class);
-
-                }
-                else if(R.id.navigation_setting ==id){
+                } else if (R.id.navigation_setting == id) {
                     getFragment(Fragment_setting.class);
                 }
                 return true;
             }
         });
-
-
-
-
     }
 
     private void getFragment(@NonNull Class<? extends androidx.fragment.app.Fragment> fragmentClass) {
-
         getSupportFragmentManager().beginTransaction()
                 .setReorderingAllowed(true)
                 .add(R.id.fragment_loader, fragmentClass, null)
