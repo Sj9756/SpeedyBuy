@@ -103,6 +103,10 @@ public class Items_description extends AppCompatActivity {
         try (Database_items items = new Database_items(Items_description.this)
         ) {
             int rid = item.getItemId();
+            if(rid==R.id.cart_toolbar){
+                Database_Op ss=new Database_Op(this);
+                ss.open();
+            }
             if (rid == R.id.wish_toolbar) {
                 if (iconSetter) {
                     item.setIcon(R.drawable.heart_unpressed);
@@ -122,7 +126,7 @@ public class Items_description extends AppCompatActivity {
                     item.setIcon(R.drawable.heart_pressed);
                     Database_Op op = new Database_Op(this);
                     op.open();
-                    op.insertRecord(position, imageUrl, heading_text, subheading_text, price_text, rating_text);
+                    op.insertRecord(id, imageUrl, heading_text, subheading_text, price_text, rating_text);
                     if (context.startsWith("ViewHolderWish")) {
                         RecyclerView recyclerView = Fragment_wishlist.recyclerView_wishlist;
                         Adapter_wishlist_fragment ad = (Adapter_wishlist_fragment) recyclerView.getAdapter();

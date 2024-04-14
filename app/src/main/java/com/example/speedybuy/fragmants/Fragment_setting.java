@@ -62,6 +62,7 @@ public class Fragment_setting extends Fragment {
                 editor.apply();
                 Intent intent =new Intent(requireActivity(), Login.class);
                 startActivity(intent);
+                requireActivity().finish();
             }
         });
         return view;
