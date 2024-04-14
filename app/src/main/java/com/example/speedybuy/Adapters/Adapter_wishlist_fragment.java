@@ -1,6 +1,8 @@
 package com.example.speedybuy.Adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,13 +74,16 @@ public class Adapter_wishlist_fragment extends RecyclerView.Adapter<ViewHolderWi
             @Override
             public void onClick(View v) {
                 Intent intent =new Intent(context, Items_discription.class);
-                intent.putExtra(index,holder.getAdapterPosition());
+                intent.putExtra("context",holder.toString());
+                intent.putExtra("mainposition",holder.getAdapterPosition());
+                intent.putExtra(index,itemsListStack.get(holder.getAdapterPosition()).id);
                 intent.putExtra(imageUrl,itemsListStack.get(holder.getAdapterPosition()).imageUrl);
                 intent.putExtra(heading_text,itemsListStack.get(holder.getAdapterPosition()).heading);
                 intent.putExtra(subheading_text,itemsListStack.get(holder.getAdapterPosition()).subheading);
                 intent.putExtra(price_text,itemsListStack.get(holder.getAdapterPosition()).price);
                 intent.putExtra(rating_text,itemsListStack.get(holder.getAdapterPosition()).setRating);
                 context.startActivity(intent);
+
             }
         });
     }
@@ -89,4 +94,6 @@ public class Adapter_wishlist_fragment extends RecyclerView.Adapter<ViewHolderWi
     public int getItemCount() {
         return itemsListStack.size();
     }
+
+
 }

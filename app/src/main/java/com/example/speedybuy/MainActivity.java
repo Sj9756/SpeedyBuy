@@ -1,14 +1,18 @@
 package com.example.speedybuy;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.example.speedybuy.Adapters.Adapter_wishlist_fragment;
 import com.example.speedybuy.Adapters.Items_list;
 import com.example.speedybuy.database.Database_items;
 import com.example.speedybuy.fragmants.Fragment_home;
@@ -24,6 +28,7 @@ import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
+    private static final int ITEM_DESCRIPTION_REQUEST_CODE = 100;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,4 +58,4 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
     }
 
-}
+    }

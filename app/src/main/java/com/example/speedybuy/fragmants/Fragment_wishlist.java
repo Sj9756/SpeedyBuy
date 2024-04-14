@@ -1,9 +1,11 @@
 package com.example.speedybuy.fragmants;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,7 +25,7 @@ import java.util.Stack;
 
 
 public class Fragment_wishlist extends Fragment {
-    RecyclerView recyclerView_wishlist;
+   public static RecyclerView recyclerView_wishlist;
 
     public Fragment_wishlist() {
 

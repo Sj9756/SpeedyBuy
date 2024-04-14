@@ -47,7 +47,7 @@ public class Database_items extends SQLiteOpenHelper {
         ArrayList<Items_list> itemsLists = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT * FROM " + this.TABLE_NAME, null);
         while (cursor.moveToNext()) {
-            Items_list item = new Items_list(cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getFloat(5));
+            Items_list item = new Items_list(cursor.getInt(0),cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getFloat(5));
             itemsLists.add(item);
         }
         cursor.close();

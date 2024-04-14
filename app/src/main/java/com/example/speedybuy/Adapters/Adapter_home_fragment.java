@@ -2,6 +2,7 @@ package com.example.speedybuy.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,7 +80,9 @@ public class Adapter_home_fragment extends RecyclerView.Adapter<ViewHolder> {
             @Override
             public void onClick(View v) {
                 Intent intent =new Intent(context,Items_discription.class);
-                intent.putExtra(index,holder.getAdapterPosition());
+                intent.putExtra("context",holder.toString());
+                intent.putExtra("mainposition",holder.getAdapterPosition());
+                intent.putExtra(index,currentItem.id);
                 intent.putExtra(imageUrl,currentItem.imageUrl);
                 intent.putExtra(heading_text,currentItem.heading);
                 intent.putExtra(subheading_text,currentItem.subheading);

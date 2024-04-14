@@ -20,8 +20,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.speedybuy.Adapters.Adapter_wishlist_fragment;
 import com.example.speedybuy.Adapters.Items_list;
 import com.example.speedybuy.database.Database_Op;
 import com.example.speedybuy.database.Database_items;
@@ -33,6 +35,8 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 public class Items_discription extends AppCompatActivity {
+    String context;
+    int mainposition;
     String imageUrl;
     String heading_text;
     String subheading_text;
@@ -71,6 +75,8 @@ public class Items_discription extends AppCompatActivity {
             getSupportActionBar().setTitle("");
         }
         Intent intent = getIntent();
+        context = intent.getStringExtra("context");
+        mainposition = intent.getIntExtra("mainposition", -1);
         imageUrl = intent.getStringExtra("imageUrl");
         heading_text = intent.getStringExtra("heading_text");
         subheading_text = intent.getStringExtra("subheading_text");
@@ -84,16 +90,18 @@ public class Items_discription extends AppCompatActivity {
         ratingBar.setRating(rating_text);
 
 
-    }
-
-
-//        OnBackPressedCallback onBackPressedCallback=new OnBackPressedCallback(true) {
+//        OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
 //            @Override
 //            public void handleOnBackPressed() {
+//
 //            }
 //        };
-//        getOnBackPressedDispatcher().addCallback(this, onBackPressedCallback);
-
+//
+//        getOnBackPressedDispatcher().
+//
+//                addCallback(this, onBackPressedCallback);
+//
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -109,33 +117,40 @@ public class Items_discription extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Database_items items = new Database_items(Items_discription.this);
         int id = item.getItemId();
+
         if (id == R.id.wish_toolbar) {
-            Database_items items=new Database_items(Items_discription.this);
-            if(iconSetter){
+            if (iconSetter) {
                 item.setIcon(R.drawable.heart_unpressed);
                 items.deleteRecord(position);
-                iconSetter=false;
-            }
-           else {
+                if (context.startsWith("ViewHolderWish")) {
+                    RecyclerView recyclerView = Fragment_wishlist.recyclerView_wishlist;
+                    Adapter_wishlist_fragment  ad = (Adapter_wishlist_fragment) recyclerView.getAdapter();
+                    ad.itemsListStack.remove(mainposition);
+                    ad.notifyItemRemoved(mainposition);
+                }
+                iconSetter = false;
+            } else {
                 item.setIcon(R.drawable.heart_pressed);
                 Database_Op op = new Database_Op(this);
                 op.open();
                 op.insertRecord(position, imageUrl, heading_text, subheading_text, price_text, rating_text);
-                Snackbar.make(findViewById(android.R.id.content),"Product is added to wishlist", Snackbar.LENGTH_SHORT)
+                Snackbar.make(findViewById(android.R.id.content), "Product is added to wishlist", Snackbar.LENGTH_SHORT)
                         .setAction("Undo", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 item.setIcon(R.drawable.heart_unpressed);
                                 items.deleteRecord(position);
-                                iconSetter=false;
+                                iconSetter = false;
 
                             }
                         }).show();
-                iconSetter=true;
+                iconSetter = true;
             }
 
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -144,4 +159,12 @@ public class Items_discription extends AppCompatActivity {
         ArrayList<Integer> data_baseIndex = databaseItems.getPosition();
         return data_baseIndex.contains(position);
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+    }
+
+
 }
