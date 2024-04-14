@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".SpalshScreen">
+    tools:context=".MySplashScreen">
 
     <ImageView
         android:id="@+id/imageView"
@@ -15,17 +15,18 @@
         android:layout_marginBottom="232dp"
         android:src="@drawable/splash"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/splash_logo" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="52dp"
         android:gravity="center"
-        android:text="@string/ic_poweredby_text"
+        android:text="@string/ic_powered_by_text"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp"
-        android:fontFamily="@font/poweredby"
+        android:fontFamily="@font/powered_by"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

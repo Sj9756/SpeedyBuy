@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">SpeedyBuy</string>
-    <string name="ic_poweredby_text">Powered by\nSonu coding</string>
+    <string name="ic_powered_by_text">Powered by\nSonu coding</string>
     <string name="backround_image_discription">backround</string>
     <string name="ic_explore_the_app">Explore the app</string>
     <string name="Lorem">Discover a vast array of incredible products and exclusive deals catered to your tastes and needs. Explore a world of possibilities and find exactly what you\'re looking for, from the latest trends to timeless classics.</string>
@@ -35,4 +35,5 @@
     <string name="user_name">santosh</string>
     <string name="headind_name">Name</string>
     <string name="personal_details">Personal Details</string>
+    <string name="splash_logo">splash_logo</string>
 </resources>

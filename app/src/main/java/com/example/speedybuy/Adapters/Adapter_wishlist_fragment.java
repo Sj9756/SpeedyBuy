@@ -1,8 +1,6 @@
 package com.example.speedybuy.Adapters;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,12 +14,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.speedybuy.Items_discription;
+import com.example.speedybuy.Items_description;
 import com.example.speedybuy.R;
-import com.example.speedybuy.database.Database_Op;
+import com.example.speedybuy.key.Ikey;
 
 import java.util.ArrayList;
-import java.util.Stack;
 
 class ViewHolderWish extends RecyclerView.ViewHolder {
     GridLayout grid_items;
@@ -41,14 +38,6 @@ class ViewHolderWish extends RecyclerView.ViewHolder {
 public class Adapter_wishlist_fragment extends RecyclerView.Adapter<ViewHolderWish>{
     public ArrayList<Items_list> itemsListStack;
     Context context;
-
-    public static final String imageUrl="imageUrl";
-    public static final  String heading_text="heading_text";
-    public static final String subheading_text="subheading_text";
-    public static final  String price_text="price_text";
-    public static final  String rating_text="rating_text";
-    public static final  String index="position";
-
     public Adapter_wishlist_fragment( Context context,ArrayList<Items_list> itemsListStack) {
         this.itemsListStack = itemsListStack;
         this.context = context;
@@ -73,15 +62,15 @@ public class Adapter_wishlist_fragment extends RecyclerView.Adapter<ViewHolderWi
         holder.grid_items.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(context, Items_discription.class);
-                intent.putExtra("context",holder.toString());
-                intent.putExtra("mainposition",holder.getAdapterPosition());
-                intent.putExtra(index,itemsListStack.get(holder.getAdapterPosition()).id);
-                intent.putExtra(imageUrl,itemsListStack.get(holder.getAdapterPosition()).imageUrl);
-                intent.putExtra(heading_text,itemsListStack.get(holder.getAdapterPosition()).heading);
-                intent.putExtra(subheading_text,itemsListStack.get(holder.getAdapterPosition()).subheading);
-                intent.putExtra(price_text,itemsListStack.get(holder.getAdapterPosition()).price);
-                intent.putExtra(rating_text,itemsListStack.get(holder.getAdapterPosition()).setRating);
+                Intent intent =new Intent(context, Items_description.class);
+                intent.putExtra(Ikey.FRAGMENT,holder.toString());
+                intent.putExtra(Ikey.POSITION,holder.getAdapterPosition());
+                intent.putExtra(Ikey.ID,itemsListStack.get(holder.getAdapterPosition()).id);
+                intent.putExtra(Ikey.IMG,itemsListStack.get(holder.getAdapterPosition()).imageUrl);
+                intent.putExtra(Ikey.HEADING,itemsListStack.get(holder.getAdapterPosition()).heading);
+                intent.putExtra(Ikey.SUBHEADING,itemsListStack.get(holder.getAdapterPosition()).subheading);
+                intent.putExtra(Ikey.PRICE,itemsListStack.get(holder.getAdapterPosition()).price);
+                intent.putExtra(Ikey.RATING,itemsListStack.get(holder.getAdapterPosition()).setRating);
                 context.startActivity(intent);
 
             }

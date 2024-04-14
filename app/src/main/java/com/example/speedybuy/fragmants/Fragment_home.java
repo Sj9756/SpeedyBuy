@@ -28,11 +28,9 @@ public class Fragment_home extends Fragment {
 
 
     public Fragment_home() {
-        // Required empty public constructor
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View view= inflater.inflate(R.layout.fragment_home, container, false);
         recyclerview_home_fragmet=view.findViewById(R.id.recyclerview_home_fragment);
         setItemems();
@@ -53,14 +51,11 @@ public class Fragment_home extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                ad.getFilter().filter(newText);
                 return true;
             }
         });
-
         recyclerview_home_fragmet.setLayoutManager(new GridLayoutManager(requireContext(),2));
         recyclerview_home_fragmet.setAdapter(ad);
-
         return view;
     }
     private void setItemems(){

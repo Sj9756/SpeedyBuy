@@ -2,7 +2,6 @@ package com.example.speedybuy.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.speedybuy.Items_discription;
+import com.example.speedybuy.Items_description;
 import com.example.speedybuy.R;
+import com.example.speedybuy.key.Ikey;
 
 import java.util.ArrayList;
 
@@ -40,20 +40,13 @@ class ViewHolder extends RecyclerView.ViewHolder {
 }
 
 public class Adapter_home_fragment extends RecyclerView.Adapter<ViewHolder> {
-    public static final String imageUrl="imageUrl";
-    public static final  String heading_text="heading_text";
-    public static final String subheading_text="subheading_text";
-    public static final  String price_text="price_text";
-    public static final  String rating_text="rating_text";
-    public static final  String index="position";
-    ArrayList<Items_list> itemems;
-
+    ArrayList<Items_list> items;
     Context context;
     private ArrayList<Items_list> filteredItemList;
 
-    public Adapter_home_fragment(Context context, ArrayList<Items_list> itemems) {
-        this.itemems = itemems;
-        this.filteredItemList = new ArrayList<>(itemems);
+    public Adapter_home_fragment(Context context, ArrayList<Items_list> items) {
+        this.items = items;
+        this.filteredItemList = new ArrayList<>(items);
         this.context = context;
 
     }
@@ -63,8 +56,7 @@ public class Adapter_home_fragment extends RecyclerView.Adapter<ViewHolder> {
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_for_items_fragment, parent, false);
-        ViewHolder viewHolder = new ViewHolder(view);
-        return viewHolder;
+        return  new ViewHolder(view);
     }
 
     @Override
@@ -76,20 +68,17 @@ public class Adapter_home_fragment extends RecyclerView.Adapter<ViewHolder> {
         holder.ratingBar.setRating(currentItem.setRating);
         String url = currentItem.imageUrl;
         Glide.with(context).load(url).into(holder.product);
-        holder.grid_items.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent =new Intent(context,Items_discription.class);
-                intent.putExtra("context",holder.toString());
-                intent.putExtra("mainposition",holder.getAdapterPosition());
-                intent.putExtra(index,currentItem.id);
-                intent.putExtra(imageUrl,currentItem.imageUrl);
-                intent.putExtra(heading_text,currentItem.heading);
-                intent.putExtra(subheading_text,currentItem.subheading);
-                intent.putExtra(price_text,currentItem.price);
-                intent.putExtra(rating_text,currentItem.setRating);
-                context.startActivity(intent);
-            }
+        holder.grid_items.setOnClickListener(v -> {
+            Intent intent =new Intent(context, Items_description.class);
+            intent.putExtra(Ikey.FRAGMENT,holder.toString());
+            intent.putExtra(Ikey.POSITION,holder.getAdapterPosition());
+            intent.putExtra(Ikey.ID,currentItem.id);
+            intent.putExtra(Ikey.IMG,currentItem.imageUrl);
+            intent.putExtra(Ikey.HEADING,currentItem.heading);
+            intent.putExtra(Ikey.SUBHEADING,currentItem.subheading);
+            intent.putExtra(Ikey.PRICE,currentItem.price);
+            intent.putExtra(Ikey.RATING,currentItem.setRating);
+            context.startActivity(intent);
         });
 
     }
@@ -99,35 +88,4 @@ public class Adapter_home_fragment extends RecyclerView.Adapter<ViewHolder> {
         return filteredItemList.size();
     }
 
-    public Filter getFilter() {
-        return new Filter() {
-            @Override
-            protected FilterResults performFiltering(CharSequence constraint) {
-                String filterPattern = constraint.toString().toLowerCase().trim();
-                FilterResults results = new FilterResults();
-                ArrayList<Items_list> filteredList = new ArrayList<>();
-
-                if (filterPattern.isEmpty()) {
-                    filteredList.addAll(itemems);
-                } else {
-
-                    for (Items_list item : itemems) {
-                        if (item.heading.toLowerCase().contains(filterPattern)) {
-                            filteredList.add(item);
-                        }
-                    }
-                }
-                results.values = filteredList;
-                results.count = filteredList.size();
-                return results;
-            }
-
-            @Override
-            protected void publishResults(CharSequence constraint, FilterResults results) {
-                filteredItemList.clear();
-                filteredItemList.addAll((ArrayList<Items_list>) results.values);
-                notifyDataSetChanged();
-            }
-        };
-    }
 }
