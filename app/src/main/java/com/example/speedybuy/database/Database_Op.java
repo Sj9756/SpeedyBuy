@@ -28,7 +28,7 @@ public class Database_Op {
         database.close();
     }
 
-    public void insertRecord(int index,String imageUrl,String heading,String subheading,String price,float rating) {
+    public void insertRecord(int index,String imageUrl,String heading,String subheading,int price,float rating) {
         ContentValues values = new ContentValues();
         values.put(INDEX,index);
         values.put(IMAGE_URL, imageUrl);

@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -31,15 +32,16 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.ArrayList;
 
 public class Items_description extends AppCompatActivity {
+    private TextView selectedTextView,selected_size;
     String context;
     int position;
     String imageUrl;
     String heading_text;
     String subheading_text;
-    String price_text;
     float rating_text;
-    int id;
+    int id , item_price;
     boolean iconSetter = false;
+
     MaterialToolbar toolbar;
     ImageView product;
     TextView heading, subheading, price;
@@ -74,13 +76,14 @@ public class Items_description extends AppCompatActivity {
         imageUrl = intent.getStringExtra(Ikey.IMG);
         heading_text = intent.getStringExtra(Ikey.HEADING);
         subheading_text = intent.getStringExtra(Ikey.SUBHEADING);
-        price_text = intent.getStringExtra(Ikey.PRICE);
+        item_price = intent.getIntExtra(Ikey.PRICE,0);
         rating_text = intent.getFloatExtra(Ikey.RATING, 0);
         id = intent.getIntExtra(Ikey.ID, -1);
         Glide.with(this).load(imageUrl).into(product);
+        String Stprice="₹"+item_price;
         heading.setText(heading_text);
         subheading.setText(subheading_text);
-        price.setText(price_text);
+        price.setText(Stprice);
         ratingBar.setRating(rating_text);
 
 
@@ -126,12 +129,12 @@ public class Items_description extends AppCompatActivity {
                     item.setIcon(R.drawable.heart_pressed);
                     Database_Op op = new Database_Op(this);
                     op.open();
-                    op.insertRecord(id, imageUrl, heading_text, subheading_text, price_text, rating_text);
+                    op.insertRecord(id, imageUrl, heading_text, subheading_text, item_price, rating_text);
                     if (context.startsWith("ViewHolderWish")) {
                         RecyclerView recyclerView = Fragment_wishlist.recyclerView_wishlist;
                         Adapter_wishlist_fragment ad = (Adapter_wishlist_fragment) recyclerView.getAdapter();
                         if (ad != null) {
-                            ad.itemsListStack.add(position, new Items_list(id, imageUrl, heading_text, subheading_text, price_text, rating_text));
+                            ad.itemsListStack.add(position, new Items_list(id, imageUrl, heading_text, subheading_text, item_price, rating_text));
                             ad.notifyItemChanged(position);
                         }
                     }
@@ -170,5 +173,23 @@ public class Items_description extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         finish();
         return true;
+    }
+
+    private void handleSelection(TextView textView) {
+        if (selectedTextView != null) {
+            selectedTextView.setSelected(false);
+            selectedTextView.setTextColor(getColor(R.color.colorPrimary));
+
+        }
+        textView.setTextColor(getColor(R.color.white));
+        textView.setSelected(true);
+        selectedTextView = textView;
+        selected_size=findViewById(R.id.selected_size);
+        String size="Size: "+selectedTextView.getText();
+        selected_size.setText(size);
+    }
+
+    public void onOptionSelected(View view) {
+        handleSelection((TextView) view);
     }
 }

@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical"
     tools:context=".Items_description">
-
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar_item_dis"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="wrap_content"
+        android:layout_marginTop="?attr/actionBarSize">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-<HorizontalScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="500dp"
-   >
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="500dp">
 
-            <ImageView
-                android:id="@+id/dis_image_items"
-                android:layout_width="384dp"
-                android:layout_height="500dp"
-                android:contentDescription="@string/product"
-                android:src="@drawable/items_images" />
-            <ImageView
-                android:layout_width="384dp"
-                android:layout_height="500dp"
-                android:contentDescription="@string/product"
-                android:src="@drawable/items_images" />
-            <ImageView
-                android:layout_width="384dp"
-                android:layout_height="500dp"
-                android:contentDescription="@string/product"
-                android:src="@drawable/items_images" />
-</LinearLayout>
-</HorizontalScrollView>
+                    <ImageView
+                        android:id="@+id/dis_image_items"
+                        android:layout_width="384dp"
+                        android:layout_height="500dp"
+                        android:contentDescription="@string/product"
+                        android:src="@drawable/items_images" />
+
+                    <ImageView
+                        android:layout_width="384dp"
+                        android:layout_height="500dp"
+                        android:contentDescription="@string/product"
+                        android:src="@drawable/items_images" />
+
+                    <ImageView
+                        android:layout_width="384dp"
+                        android:layout_height="500dp"
+                        android:contentDescription="@string/product"
+                        android:src="@drawable/items_images" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -95,8 +95,67 @@
                     android:numStars="5"
                     android:progressTint="@color/rating_bar"
                     android:rating="3.5" />
+
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/selected_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="@string/size_uk"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_size"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/size_chose"
+                        android:onClick="onOptionSelected"
+                        android:text="@string/uk_7" />
+
+                    <TextView
+                        style="@style/size_chose"
+                        android:onClick="onOptionSelected"
+                        android:text="@string/uk_8" />
+
+                    <TextView
+                        style="@style/size_chose"
+                        android:onClick="onOptionSelected"
+                        android:text="@string/uk_9" />
+
+                    <TextView
+                        style="@style/size_chose"
+                        android:onClick="onOptionSelected"
+                        android:text="@string/uk_10" />
+                </LinearLayout>
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
-
-</LinearLayout>
+<GridLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:columnCount="2"
+    android:layout_alignParentBottom="true">
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/add_cart_btn"
+        style="@style/Buy_cart"
+        android:background="@color/white"
+        android:text="@string/add_to_cart" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buy_btn"
+        style="@style/Buy_cart"
+        android:background="@color/colorPrimary"
+        android:text="@string/buy_now" />
+</GridLayout>
+</RelativeLayout>

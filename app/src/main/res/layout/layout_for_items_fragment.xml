@@ -43,17 +43,15 @@
                     android:layout_gravity="bottom"
                     android:layout_marginTop="10dp"
                     android:text="@string/heading"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/sub_heading_items"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginTop="10dp"
                     android:ellipsize="end"
-                    android:maxLines="2"
+                    android:maxLines="1"
                     android:text="@string/text_description"
                     android:textSize="11sp" />
 
@@ -64,7 +62,7 @@
                     android:layout_gravity="bottom"
                     android:layout_marginTop="1dp"
                     android:text="@string/price"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <RatingBar
@@ -78,6 +76,7 @@
                     android:rating="3.5" />
 
             </LinearLayout>
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </GridLayout>

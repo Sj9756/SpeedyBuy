@@ -64,7 +64,8 @@ public class Adapter_home_fragment extends RecyclerView.Adapter<ViewHolder> {
         Items_list currentItem = filteredItemList.get(position);
         holder.heading.setText(currentItem.heading);
         holder.subheading.setText(currentItem.subheading);
-        holder.price.setText(currentItem.price);
+        String price="₹"+currentItem.price;
+        holder.price.setText(price);
         holder.ratingBar.setRating(currentItem.setRating);
         String url = currentItem.imageUrl;
         Glide.with(context).load(url).into(holder.product);

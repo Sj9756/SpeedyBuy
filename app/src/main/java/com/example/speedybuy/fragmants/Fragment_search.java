@@ -5,13 +5,19 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.speedybuy.R;
 
 
 public class Fragment_search extends Fragment {
+    LottieAnimationView lottieAnimationView;
 
     public Fragment_search() {
+    }
 
+    public Fragment_search(LottieAnimationView lottieAnimationView) {
+        this.lottieAnimationView=lottieAnimationView;
     }
 
     @Override

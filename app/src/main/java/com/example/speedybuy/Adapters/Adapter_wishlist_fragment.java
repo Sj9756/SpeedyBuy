@@ -55,7 +55,9 @@ public class Adapter_wishlist_fragment extends RecyclerView.Adapter<ViewHolderWi
     public void onBindViewHolder(@NonNull ViewHolderWish holder, int position) {
         holder.heading.setText(itemsListStack.get(position).heading);
         holder.subheading.setText(itemsListStack.get(position).subheading);
-        holder.price.setText(itemsListStack.get(position).price);
+        String price="₹"+itemsListStack.get(position).price;
+        holder.price.setText(price);
+        holder.price.setText(price);
         holder.ratingBar.setRating(itemsListStack.get(position).setRating);
         String url = itemsListStack.get(position).imageUrl;
         Glide.with(context).load(url).into(holder.product);

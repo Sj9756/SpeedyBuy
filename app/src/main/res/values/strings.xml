@@ -36,4 +36,17 @@
     <string name="headind_name">Name</string>
     <string name="personal_details">Personal Details</string>
     <string name="splash_logo">splash_logo</string>
+    <string name="uk_7">UK 7</string>
+    <string name="uk_8">UK 8</string>
+    <string name="uk_9">UK 9</string>
+    <string name="uk_10">UK 10</string>
+    <string name="size_uk">Size:</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="buy_now">Buy now</string>
+    <string name="beauty">Beauty</string>
+    <string name="fashion">Fashion</string>
+    <string name="mens">Mens</string>
+    <string name="womens">Womens</string>
+    <string name="kids">Kids</string>
+    <string name="ethnic_sets">Ethnic Sets</string>
 </resources>

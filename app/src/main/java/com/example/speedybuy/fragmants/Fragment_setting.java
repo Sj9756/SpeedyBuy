@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 import com.example.speedybuy.Login;
 import com.example.speedybuy.R;
@@ -26,10 +27,13 @@ import com.google.android.material.appbar.MaterialToolbar;
 import java.util.Objects;
 
 public class Fragment_setting extends Fragment {
-
+    LottieAnimationView lottieAnimationView;
 
     public Fragment_setting() {
+    }
 
+    public Fragment_setting(LottieAnimationView lottieAnimationView) {
+        this.lottieAnimationView=lottieAnimationView;
     }
 
     @Override
@@ -45,12 +49,13 @@ public class Fragment_setting extends Fragment {
         TextView name=view.findViewById(R.id.user_name);
         TextView email_add=view.findViewById(R.id.email_id);
         Button log_out=view.findViewById(R.id.sign_out_button);
+
         SharedPreferences pref= requireActivity().getSharedPreferences("login", Context.MODE_PRIVATE);
         String Username=pref.getString("name","John");
         String emailid=pref.getString("email","example12");
         String url=pref.getString("profile","");
         url=url.replace("s96","s900");
-        Log.d("url",url);
+
         Glide.with(this).load(url).into(profile);
         name.setText(Username);
         email_add.setText(emailid);
