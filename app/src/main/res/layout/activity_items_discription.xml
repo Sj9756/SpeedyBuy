@@ -99,6 +99,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/size_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -139,7 +140,6 @@
                         android:text="@string/uk_10" />
                 </LinearLayout>
             </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
 <GridLayout

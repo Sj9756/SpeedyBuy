@@ -15,8 +15,23 @@
         android:theme="@style/Theme.SpeedyBuy"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivityss"
-            android:exported="true" />
+            android:name=".category.Kids"
+            android:exported="false" />
+        <activity
+            android:name=".category.Accessories"
+            android:exported="false" />
+        <activity
+            android:name=".category.Fashion"
+            android:exported="false" />
+        <activity
+            android:name=".category.Ethnic"
+            android:exported="false" />
+        <activity
+            android:name=".category.Beauty"
+            android:exported="false" />
+        <activity
+            android:name=".category.Mens"
+            android:exported="false" />
         <activity
             android:name=".MySplash"
             android:exported="true">

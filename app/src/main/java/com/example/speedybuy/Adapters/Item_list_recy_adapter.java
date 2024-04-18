@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -39,15 +38,15 @@ class ViewHolder extends RecyclerView.ViewHolder {
     }
 }
 
-public class Adapter_home_fragment extends RecyclerView.Adapter<ViewHolder> {
-    ArrayList<Items_list> items;
+public class Item_list_recy_adapter extends RecyclerView.Adapter<ViewHolder> {
+   public ArrayList<Items_list> items;
     Context context;
-    private ArrayList<Items_list> filteredItemList;
+    String fragment_name;
 
-    public Adapter_home_fragment(Context context, ArrayList<Items_list> items) {
+    public Item_list_recy_adapter(Context context, ArrayList<Items_list> items,String fragment_name) {
         this.items = items;
-        this.filteredItemList = new ArrayList<>(items);
         this.context = context;
+        this.fragment_name=fragment_name;
 
     }
 
@@ -61,7 +60,7 @@ public class Adapter_home_fragment extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Items_list currentItem = filteredItemList.get(position);
+        Items_list currentItem = items.get(position);
         holder.heading.setText(currentItem.heading);
         holder.subheading.setText(currentItem.subheading);
         String price="₹"+currentItem.price;
@@ -71,7 +70,7 @@ public class Adapter_home_fragment extends RecyclerView.Adapter<ViewHolder> {
         Glide.with(context).load(url).into(holder.product);
         holder.grid_items.setOnClickListener(v -> {
             Intent intent =new Intent(context, Items_description.class);
-            intent.putExtra(Ikey.FRAGMENT,holder.toString());
+            intent.putExtra(Ikey.FRAGMENT,fragment_name);
             intent.putExtra(Ikey.POSITION,holder.getAdapterPosition());
             intent.putExtra(Ikey.ID,currentItem.id);
             intent.putExtra(Ikey.IMG,currentItem.imageUrl);
@@ -86,7 +85,7 @@ public class Adapter_home_fragment extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return filteredItemList.size();
+        return items.size();
     }
 
 }

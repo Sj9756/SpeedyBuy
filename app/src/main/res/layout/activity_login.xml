@@ -58,7 +58,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true">
-    <include layout="@layout/activity_loginforminput"/>
+    <include layout="@layout/loginform_layout"/>
 </LinearLayout>
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationView"

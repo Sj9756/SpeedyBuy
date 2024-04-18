@@ -37,6 +37,7 @@
         <item name="android:foreground">?attr/selectableItemBackground</item>
     </style>
     <style name="category_linearlayout" parent="Theme.SpeedyBuy">
+        <item name="android:background">?attr/selectableItemBackground</item>
         <item name="android:layout_marginEnd">15dp</item>
     </style>
     <style name="style_circular" parent="Theme.SpeedyBuy">

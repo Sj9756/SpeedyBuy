@@ -1,29 +1,31 @@
 package com.example.speedybuy.fragmants;
 
+import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
-import com.example.speedybuy.Adapters.Adapter_home_fragment;
-import com.example.speedybuy.Adapters.Items_list;
 import com.example.speedybuy.R;
-import com.google.firebase.database.ChildEventListener;
+import com.example.speedybuy.category.Beauty;
+import com.example.speedybuy.category.Ethnic;
+import com.example.speedybuy.category.Fashion;
+import com.example.speedybuy.category.Kids;
+import com.example.speedybuy.category.Mens;
+import com.example.speedybuy.category.Accessories;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,87 +36,81 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Fragment_home extends Fragment {
+    List<SlideModel> slideModelList = new ArrayList<>();
+    LinearLayout category_linearlayout;
     ImageSlider imageSlider;
-    ArrayList<Items_list> itemem_array=new ArrayList<>();
     SearchView searchView;
     CardView cardView;
-    RecyclerView recyclerview_home_fragmet;
     LottieAnimationView lottieAnimationView;
 
     public Fragment_home() {
     }
 
     public Fragment_home(LottieAnimationView lottieAnimationView) {
-        this.lottieAnimationView=lottieAnimationView;
+        this.lottieAnimationView = lottieAnimationView;
 
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view= inflater.inflate(R.layout.fragment_home, container, false);
-        recyclerview_home_fragmet=view.findViewById(R.id.recyclerview_home_fragment);
-        getData();
-        lottieAnimationView.setVisibility(View.VISIBLE);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+
         searchView=view.findViewById(R.id.search);
-        cardView=view.findViewById(R.id.search_card);
+        imageSlider = view.findViewById(R.id.image_slider);
 
-        cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                searchView.setIconified(false);
-            }
-        });
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
+        category_linearlayout=view.findViewById(R.id.category_linearlayout);
+        category_linearlayout.setVisibility(View.INVISIBLE);
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return true;
-            }
-        });
+        imageSlider.setVisibility(View.INVISIBLE);
+        searchView.setVisibility(View.INVISIBLE);
 
-        imageSlider= view.findViewById(R.id.image_slider);
-        List<SlideModel> slideModelList=new ArrayList<>();
-        String url1="https://rukminim2.flixcart.com/fk-p-flap/1600/710/image/1b1ee0ac046bc394.jpg?q=20";
-        String url2="https://rukminim2.flixcart.com/fk-p-flap/480/80/image/c8f548688def283c.jpg?q=20";
-        String url3="https://rukminim2.flixcart.com/fk-p-flap/480/80/image/bd94c9e6358f3a70.jpg?q=20";
-        String url4="https://rukminim2.flixcart.com/fk-p-flap/480/210/image/946492be05a86aad.png?q=20";
-        slideModelList.add(new SlideModel(url1, ScaleTypes.FIT));
-        slideModelList.add(new SlideModel(url1, ScaleTypes.FIT));
-        slideModelList.add(new SlideModel(url1, ScaleTypes.FIT));
-        slideModelList.add(new SlideModel(url4, ScaleTypes.FIT));
-        imageSlider.setImageList(slideModelList);
+        lottieAnimationView.setVisibility(View.VISIBLE);
+        category_linearlayout(Beauty.class,view,R.id.home_beauty);
+        category_linearlayout(Ethnic.class,view,R.id.home_ethnic);
+        category_linearlayout(Fashion.class,view,R.id.home_fashion);
+        category_linearlayout(Mens.class,view,R.id.home_mens);
+        category_linearlayout(Accessories.class,view,R.id.home_accessories);
+        category_linearlayout(Kids.class,view,R.id.home_kid);
+        Slider_images_data();
         return view;
 
     }
 
-
-    private boolean getData() {
-
-        DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference("items");
-        itemsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+    private void category_linearlayout(Class<?> cls, View view , @IdRes int id  ) {
+        LinearLayout linearLayout = view.findViewById(id);
+        linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
-
-                    Items_list itemList = childSnapshot.getValue(Items_list.class);
-                    itemem_array.add(itemList);
-                }
-                lottieAnimationView.setVisibility(View.INVISIBLE);
-                lottieAnimationView.setProgress(0);
-                Adapter_home_fragment ad=new Adapter_home_fragment(requireContext(),itemem_array);
-                recyclerview_home_fragmet.setLayoutManager(new GridLayoutManager(requireContext(),2));
-                recyclerview_home_fragmet.setAdapter(ad);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle database error
+            public void onClick(View v) {
+                Intent intent = new Intent(requireContext(), cls);
+                startActivity(intent);
             }
         });
-    return true;
     }
 
+    private void Slider_images_data() {
+
+        DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference("Slider_images");
+
+        itemsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                    String itemList = childSnapshot.getValue(String.class);
+                    slideModelList.add(new SlideModel(itemList,ScaleTypes.FIT));
+                }
+                lottieAnimationView.setVisibility(View.INVISIBLE);
+                imageSlider.setVisibility(View.VISIBLE);
+                imageSlider.setImageList(slideModelList);
+                searchView.setVisibility(View.VISIBLE);
+                category_linearlayout.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+    }
 }

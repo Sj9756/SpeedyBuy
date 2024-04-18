@@ -43,7 +43,9 @@
                     android:layout_gravity="bottom"
                     android:layout_marginTop="10dp"
                     android:text="@string/heading"
-                    android:textSize="16sp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <TextView

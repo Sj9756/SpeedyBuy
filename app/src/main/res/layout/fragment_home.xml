@@ -41,6 +41,7 @@
                 android:scrollbars="none">
 
                 <LinearLayout
+                    android:id="@+id/category_linearlayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="10dp"
@@ -119,7 +120,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/home_women"
+                        android:id="@+id/home_accessories"
                         style="@style/category_linearlayout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -127,13 +128,13 @@
 
                         <de.hdodenhof.circleimageview.CircleImageView
                             style="@style/style_circular"
-                            android:src="@drawable/women" />
+                            android:src="@drawable/accessories" />
 
                         <TextView
                             style="@style/style_circular_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/womens" />
+                            android:text="@string/accessories" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -158,11 +159,6 @@
 
             </HorizontalScrollView>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerview_home_fragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false" />
 
         </LinearLayout>
 

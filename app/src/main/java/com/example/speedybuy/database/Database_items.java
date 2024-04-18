@@ -1,9 +1,11 @@
 package com.example.speedybuy.database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -17,7 +19,7 @@ public class Database_items extends SQLiteOpenHelper {
     private static final int DATABASE_V = 1;
 
     //column
-    private static final String INDEX = "index_no";
+    private static final String ID = "id";
     private static final String IMAGE_URL = "image_url";
     private static final String HEADING = "heading";
     private static final String SUBHEADING = "subheading";
@@ -31,7 +33,7 @@ public class Database_items extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String create = "CREATE TABLE IF NOT EXISTS  " + TABLE_NAME + "(" + INDEX + " INT PRIMARY KEY, " + IMAGE_URL + " VARCHAR(200)," + HEADING + " VARCHAR(200)," + SUBHEADING + " VARCHAR(200)," + PRICE + " INT," + RATING + " FLOAT" + ");";
+        String create = "CREATE TABLE IF NOT EXISTS  " + TABLE_NAME + "(" + ID + " INT PRIMARY KEY, " + IMAGE_URL + " VARCHAR(200)," + HEADING + " VARCHAR(200)," + SUBHEADING + " VARCHAR(200)," + PRICE + " INT," + RATING + " FLOAT" + ");";
         db.execSQL(create);
 
     }
@@ -54,18 +56,30 @@ public class Database_items extends SQLiteOpenHelper {
         return itemsLists;
     }
 
-    public ArrayList<Integer> getPosition() {
+    public ArrayList<Integer> getId() {
         SQLiteDatabase database = this.getReadableDatabase();
         ArrayList<Integer> data = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT " + INDEX + " FROM " + this.TABLE_NAME + " ORDER BY " + INDEX + " ASC", null);
+        Cursor cursor = database.rawQuery("SELECT " + ID + " FROM " + this.TABLE_NAME + " ORDER BY " + ID + " ASC", null);
         while (cursor.moveToNext()) {
             data.add(cursor.getInt(0));
         }
         cursor.close();
         return data;
     }
-    public void deleteRecord(int index){
+    public void deleteRecord(int id){
         SQLiteDatabase database = this.getWritableDatabase();
-        database.delete(TABLE_NAME,INDEX +" = "+index,null);
+        database.delete(TABLE_NAME,ID +" = "+id,null);
+        database.close();
+    }
+    public void insertRecord(int id,String imageUrl,String heading,String subheading,int price,float rating) {
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(ID,id);
+        values.put(IMAGE_URL, imageUrl);
+        values.put(HEADING, heading);
+        values.put(SUBHEADING, subheading);
+        values.put(PRICE, price);
+        values.put(RATING, rating);
+        database.insert(TABLE_NAME,null,values);
     }
 }
