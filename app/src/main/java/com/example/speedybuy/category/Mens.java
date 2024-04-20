@@ -73,48 +73,48 @@ public class Mens extends AppCompatActivity {
 
     }
 
-//    private void insertdata() {
-//        ArrayList<Items_list>ethnic=new ArrayList<>();
-//        Items_list itemsList1=new Items_list(41,"https://rukminim2.flixcart.com/image/832/832/xif0q/kids-apparel-combo/y/x/q/5-6-years-sis-l-s-ch-micky-1p-show-in-style-original-imagyexxv7nzqane.jpeg?q=70&crop=false","Show In Style",
-//                                "Boys Casual Vest Shorts  (Multicolor)",399,3f);
-//
-//        Items_list itemsList2=new Items_list(42,"https://rukminim2.flixcart.com/image/832/832/xif0q/kids-apparel-combo/u/p/b/6-7-years-1052-prpl-ultinity-original-imagw8vshufggq6a.jpeg?q=70&crop=false","ULTINITY",
-//                "Girls Party(Festive) Top Pyjama  (Multicolor)",333,3.8f);
-//
-//        Items_list itemsList3=new Items_list(43,"https://rukminim2.flixcart.com/image/832/832/xif0q/kids-t-shirt/e/q/l/3-4-years-kuctshrt232-kuchipoo-original-imagx36ey2hk9qc7.jpeg?q=70&crop=false","Kuchipoo",
-//                        "Boys Printed Cotton Blend T Shirt  (Multicolor, Pack of 5)",500,4.2f);
-//
-//        Items_list itemsList4=new Items_list(44,"https://rukminim2.flixcart.com/image/832/832/xif0q/sweatshirt/t/h/k/14-15-years-nuucoswt0572-5fk-nusyl-original-imagvyyvts7kkmhg.jpeg?q=70&crop=false","Nusyl",
-//                "Girls Full Sleeve Printed Sweatshirt",400,4.2f);
-//
-//        Items_list itemsList5=new Items_list(45,"https://rukminim2.flixcart.com/image/832/832/xif0q/kids-short/c/z/v/13-14-years-ji-t2fshort-13-14-fasla-original-imag3d8pzucwza7t-bb.jpeg?q=70&crop=false","Fasla",
-//                                "Short For Boys Casual Printed, Solid Pure Cotton  (Multicolor, Pack of 5)#JustHere",199,5f);
-//
-//
-//        Items_list itemsList6=new Items_list(46,"https://rukminim2.flixcart.com/image/832/832/xif0q/kids-apparel-combo/j/i/4/6-7-years-printed-emblica-original-imagpyf2hzfp6kms.jpeg?q=70&crop=false","EMBLICA",
-//                "Baby Boys Casual T-shirt Pant  (Multicolor)",237,4f);
-//
-//        Items_list itemsList7=new Items_list(47,"https://rukminim2.flixcart.com/image/832/832/xif0q/shirt/v/h/m/11-12-years-624-j-woven-stack-original-imagxgtyj9y9gfak.jpeg?q=70&crop=false","GADHIYA TRENDZ",
-//                                "Boys Slim Fit Printed Spread Collar Casual Shir",560,4f);
-//
-//        Items_list itemsList8=new Items_list(48,"https://rukminim2.flixcart.com/image/832/832/xif0q/kids-t-shirt/7/e/t/8-9-years-px1rcbvirat-kids-rjm-original-imagzhqaw3bhtwac.jpeg?q=70&crop=false","UNIQ",
-//                                "Boys & Girls Printed Polyester T Shirt  (Multicolor, Pack of 1)",299,4.2F);
-//
-//
-//
-//        ethnic.add(itemsList1);
-//        ethnic.add(itemsList2);
-//        ethnic.add(itemsList3);
-//        ethnic.add(itemsList4);
-//        ethnic.add(itemsList5);
-//        ethnic.add(itemsList6);
-//        ethnic.add(itemsList7);
-//        ethnic.add(itemsList8);
-//
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("All_product");
-//        myRef.child("kids").setValue(ethnic);
-//
-//
-//    }
+    private void insertdata() {
+        ArrayList<Items_list>ethnic=new ArrayList<>();
+        Items_list itemsList1=new Items_list(41,"https://rukminim2.flixcart.com/image/832/832/xif0q/kids-apparel-combo/y/x/q/5-6-years-sis-l-s-ch-micky-1p-show-in-style-original-imagyexxv7nzqane.jpeg?q=70&crop=false","Show In Style",
+                                "Boys Casual Vest Shorts  (Multicolor)",399,3f);
+
+        Items_list itemsList2=new Items_list(42,"https://rukminim2.flixcart.com/image/832/832/xif0q/kids-apparel-combo/u/p/b/6-7-years-1052-prpl-ultinity-original-imagw8vshufggq6a.jpeg?q=70&crop=false","ULTINITY",
+                "Girls Party(Festive) Top Pyjama  (Multicolor)",333,3.8f);
+
+        Items_list itemsList3=new Items_list(43,"https://rukminim2.flixcart.com/image/832/832/xif0q/kids-t-shirt/e/q/l/3-4-years-kuctshrt232-kuchipoo-original-imagx36ey2hk9qc7.jpeg?q=70&crop=false","Kuchipoo",
+                        "Boys Printed Cotton Blend T Shirt  (Multicolor, Pack of 5)",500,4.2f);
+
+        Items_list itemsList4=new Items_list(44,"https://rukminim2.flixcart.com/image/832/832/xif0q/sweatshirt/t/h/k/14-15-years-nuucoswt0572-5fk-nusyl-original-imagvyyvts7kkmhg.jpeg?q=70&crop=false","Nusyl",
+                "Girls Full Sleeve Printed Sweatshirt",400,4.2f);
+
+        Items_list itemsList5=new Items_list(45,"https://rukminim2.flixcart.com/image/832/832/xif0q/kids-short/c/z/v/13-14-years-ji-t2fshort-13-14-fasla-original-imag3d8pzucwza7t-bb.jpeg?q=70&crop=false","Fasla",
+                                "Short For Boys Casual Printed, Solid Pure Cotton  (Multicolor, Pack of 5)#JustHere",199,5f);
+
+
+        Items_list itemsList6=new Items_list(46,"https://rukminim2.flixcart.com/image/832/832/xif0q/kids-apparel-combo/j/i/4/6-7-years-printed-emblica-original-imagpyf2hzfp6kms.jpeg?q=70&crop=false","EMBLICA",
+                "Baby Boys Casual T-shirt Pant  (Multicolor)",237,4f);
+
+        Items_list itemsList7=new Items_list(47,"https://rukminim2.flixcart.com/image/832/832/xif0q/shirt/v/h/m/11-12-years-624-j-woven-stack-original-imagxgtyj9y9gfak.jpeg?q=70&crop=false","GADHIYA TRENDZ",
+                                "Boys Slim Fit Printed Spread Collar Casual Shir",560,4f);
+
+        Items_list itemsList8=new Items_list(48,"https://rukminim2.flixcart.com/image/832/832/xif0q/kids-t-shirt/7/e/t/8-9-years-px1rcbvirat-kids-rjm-original-imagzhqaw3bhtwac.jpeg?q=70&crop=false","UNIQ",
+                                "Boys & Girls Printed Polyester T Shirt  (Multicolor, Pack of 1)",299,4.2F);
+
+
+
+        ethnic.add(itemsList1);
+        ethnic.add(itemsList2);
+        ethnic.add(itemsList3);
+        ethnic.add(itemsList4);
+        ethnic.add(itemsList5);
+        ethnic.add(itemsList6);
+        ethnic.add(itemsList7);
+        ethnic.add(itemsList8);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("All_product");
+        myRef.child("kids").setValue(ethnic);
+
+
+    }
 }

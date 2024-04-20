@@ -49,4 +49,11 @@
     <string name="accessories">Accs</string>
     <string name="kids">Kids</string>
     <string name="ethnic_sets">Ethnic Sets</string>
+    <string name="suggested_for_you">Suggested for You</string>
+    <string name="time_22h_55m_20s_remaining">22h 55m 20s remaining</string>
+    <string name="deal_of_the_day">Deal of the Day</string>
+    <string name="view_all">View all</string>
+    <string name="trending_products">Trending Products</string>
+    <string name="last_date">Last Date 29/04/24</string>
+    <string name="summer_sale">summer_sale</string>
 </resources>

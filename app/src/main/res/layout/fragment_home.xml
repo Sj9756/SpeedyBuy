@@ -9,6 +9,8 @@
     tools:context=".fragmants.Fragment_home">
 
     <ScrollView
+
+        android:id="@+id/scrollview_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -159,7 +161,163 @@
 
             </HorizontalScrollView>
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/deal_of_the_day"
+                android:backgroundTint="#4392F9">
 
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/home_text_view_special_offers1"
+                        android:text="@string/deal_of_the_day" />
+
+                    <TextView
+                        android:id="@+id/home_remaining"
+                        style="@style/home_text_view_special_offers2"
+                        android:text="@string/time_22h_55m_20s_remaining"
+                        app:drawableStartCompat="@drawable/clock" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/view_all_home"
+                    style="@style/home_text_view_special_offers3"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/view_all_back"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="15dp"
+                    tools:ignore="RelativeOverlap" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/suggested_for_you"
+                style="@style/home_section_text"
+                android:text="@string/suggested_for_you" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp" />
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/deal_of_the_day"
+                android:backgroundTint="#FD6E87">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/home_text_view_special_offers1"
+                        android:text="@string/trending_products" />
+
+                    <TextView
+                        android:id="@+id/home_last_date"
+                        style="@style/home_text_view_special_offers2"
+                        android:text="@string/last_date"
+                        app:drawableStartCompat="@drawable/calender" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/view_all_home_calender"
+                    style="@style/home_text_view_special_offers3"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/view_all_back"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="15dp"
+                    tools:ignore="RelativeOverlap" />
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_home_trending"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:nestedScrollingEnabled="false" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/home_linner_layout_background"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scaleType="fitXY"
+                    android:contentDescription="@string/summer_sale"
+                    android:src="@drawable/summer_banner" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:paddingBottom="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="New Arrivals"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Summer’ 25 Collections"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:layout_width="100dp"
+                        android:layout_height="35dp"
+                        android:textAllCaps="false"
+                        android:gravity="center"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/view_all_btn_back"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:drawableEnd="@drawable/arrow"
+                        android:text="@string/view_all"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="2dp"
+                        android:textColor="@color/white" />
+                </RelativeLayout>
+
+            </LinearLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:contentDescription="@string/summer_sale"
+                android:src="@drawable/shoes_sale_banner" />
         </LinearLayout>
 
     </ScrollView>
