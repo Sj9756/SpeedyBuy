@@ -25,7 +25,7 @@
     <item name="android:onClick">onOptionSelected</item>
     <item name="android:gravity">center</item>
     <item name="android:layout_marginEnd">5dp</item>
-    <item name="android:background">@drawable/size_design</item>
+    <item name="android:background">@drawable/shape_for_size_chooser</item>
 </style>
     <style name="Buy_cart" parent="Theme.SpeedyBuy">
         <item name="android:layout_width">0dp</item>
@@ -79,7 +79,7 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_marginEnd">10dp</item>
-        <item name="drawableEndCompat">@drawable/arrow</item>
+        <item name="drawableEndCompat">@drawable/ic_arrow</item>
 
     </style>
 </resources>

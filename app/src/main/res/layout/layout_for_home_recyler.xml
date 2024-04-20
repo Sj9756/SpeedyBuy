@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/home_linner_layout_background"
+    android:background="@drawable/shape_for_recycler_view_background"
     android:orientation="vertical"
     android:id="@+id/suggested_linear_layout"
     android:padding="10dp"

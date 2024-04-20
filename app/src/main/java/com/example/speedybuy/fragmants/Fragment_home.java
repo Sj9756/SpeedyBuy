@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,16 +42,15 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class Fragment_home extends Fragment {
-    TextView view_all_home,home_remaining;
+    TextView view_all_home, home_remaining;
 
-    ScrollView scrollView_home;
+    // ScrollView scrollView_home;
 
-    RecyclerView recycler_view_home,recycler_view_home_trending;
+    RecyclerView recycler_view_suggested, recycler_view_trending_products;
     List<SlideModel> slideModelList = new ArrayList<>();
     LinearLayout category_linearlayout;
     ImageSlider imageSlider;
@@ -72,21 +70,21 @@ public class Fragment_home extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        home_remaining=view.findViewById(R.id.home_remaining);
-        view_all_home=view.findViewById(R.id.view_all_home);
-        scrollView_home=view.findViewById(R.id.scrollview_home);
-        searchView=view.findViewById(R.id.search);
+        home_remaining = view.findViewById(R.id.event_time_text_view);
+        view_all_home = view.findViewById(R.id.event_dod_btn);
+        // scrollView_home=view.findViewById(R.id.scrollview_home);
+        searchView = view.findViewById(R.id.search);
         imageSlider = view.findViewById(R.id.image_slider);
-        recycler_view_home=view.findViewById(R.id.recycler_view_home);
-        recycler_view_home_trending=view.findViewById(R.id.recycler_view_home_trending);
-        category_linearlayout=view.findViewById(R.id.category_linearlayout);
+        recycler_view_suggested = view.findViewById(R.id.recycler_view_suggested);
+        recycler_view_trending_products = view.findViewById(R.id.recycler_view_trending_products);
+        category_linearlayout = view.findViewById(R.id.category_linearlayout);
         lottieAnimationView.setVisibility(View.VISIBLE);
-        category_linearlayout(Beauty.class,view,R.id.home_beauty);
-        category_linearlayout(Ethnic.class,view,R.id.home_ethnic);
-        category_linearlayout(Fashion.class,view,R.id.home_fashion);
-        category_linearlayout(Mens.class,view,R.id.home_mens);
-        category_linearlayout(Accessories.class,view,R.id.home_accessories);
-        category_linearlayout(Kids.class,view,R.id.home_kid);
+        category_linearlayout(Beauty.class, view, R.id.home_beauty);
+        category_linearlayout(Ethnic.class, view, R.id.home_ethnic);
+        category_linearlayout(Fashion.class, view, R.id.home_fashion);
+        category_linearlayout(Mens.class, view, R.id.home_mens);
+        category_linearlayout(Accessories.class, view, R.id.home_accessories);
+        category_linearlayout(Kids.class, view, R.id.home_kid);
         startTimer();
         view_all_home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,19 +93,21 @@ public class Fragment_home extends Fragment {
             }
         });
         Slider_images_data();
-        getDataFor_recycler_view_home();
-        recycler_view_home_trending();
+        getDataFor_recycler_view_suggested();
+        getDataFor_recycler_view_trending_products();
+
         return view;
 
     }
 
-    private void category_linearlayout(Class<?> cls, View view , @IdRes int id  ) {
+    private void category_linearlayout(Class<?> cls, View view, @IdRes int id) {
         LinearLayout linearLayout = view.findViewById(id);
         linearLayout.setOnClickListener(v -> {
             Intent intent = new Intent(requireContext(), cls);
             startActivity(intent);
         });
     }
+
     private void Slider_images_data() {
 
         DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference("Slider_images");
@@ -117,7 +117,7 @@ public class Fragment_home extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot childSnapshot : snapshot.getChildren()) {
                     String itemList = childSnapshot.getValue(String.class);
-                    slideModelList.add(new SlideModel(itemList,ScaleTypes.FIT));
+                    slideModelList.add(new SlideModel(itemList, ScaleTypes.FIT));
                 }
                 imageSlider.setImageList(slideModelList);
             }
@@ -130,7 +130,8 @@ public class Fragment_home extends Fragment {
 
 
     }
-    private void getDataFor_recycler_view_home() {
+
+    private void getDataFor_recycler_view_suggested() {
         ArrayList<Items_list> item_array = new ArrayList<>();
         DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference("All_product");
 
@@ -143,11 +144,11 @@ public class Fragment_home extends Fragment {
                 }
                 lottieAnimationView.setVisibility(View.INVISIBLE);
                 lottieAnimationView.setProgress(0);
-                scrollView_home.setVisibility(View.VISIBLE);
-                Home_adapter ad = new Home_adapter(item_array,requireContext(),"Fragment_home");
+                //  scrollView_home.setVisibility(View.VISIBLE);
+                Home_adapter ad = new Home_adapter(item_array, requireContext(), "Fragment_home");
                 LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
-                recycler_view_home.setLayoutManager(layoutManager);
-                recycler_view_home.setAdapter(ad);
+                recycler_view_suggested.setLayoutManager(layoutManager);
+                recycler_view_suggested.setAdapter(ad);
             }
 
             @Override
@@ -157,18 +158,19 @@ public class Fragment_home extends Fragment {
         });
 
     }
+
     private void startTimer() {
         Timer timer = new Timer();
 
         TimerTask task = new TimerTask() {
-            int remainingTime = 24*60*60;
+            int remainingTime = 24 * 60 * 60;
 
             @Override
             public void run() {
                 int hour = remainingTime / 3600;
                 int minutes = (remainingTime % 3600) / 60;
                 int seconds = remainingTime % 60;
-                String formattedTime = String.format(Locale.US, "%02d"+"h "+"%02d"+"m "+"%02d"+"s remaining", hour, minutes, seconds);
+                String formattedTime = String.format(Locale.US, "%02d" + "h " + "%02d" + "m " + "%02d" + "s remaining", hour, minutes, seconds);
                 requireActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -185,7 +187,8 @@ public class Fragment_home extends Fragment {
         };
         timer.scheduleAtFixedRate(task, 0, 1000);
     }
-    private void recycler_view_home_trending() {
+
+    private void getDataFor_recycler_view_trending_products() {
         ArrayList<Items_list> item_array = new ArrayList<>();
         DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference("All_product");
 
@@ -197,11 +200,10 @@ public class Fragment_home extends Fragment {
                     Items_list itemList = childSnapshot.getValue(Items_list.class);
                     item_array.add(itemList);
                 }
-                scrollView_home.setVisibility(View.VISIBLE);
-                Home_adapter ad = new Home_adapter(item_array,requireContext(),"Fragment_home");
-              //  LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
-                recycler_view_home_trending.setLayoutManager(new GridLayoutManager(requireContext(),3));
-                recycler_view_home_trending.setAdapter(ad);
+                Home_adapter ad = new Home_adapter(item_array, requireContext(), "Fragment_home");
+                //  LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
+                recycler_view_trending_products.setLayoutManager(new GridLayoutManager(requireContext(), 3));
+                recycler_view_trending_products.setAdapter(ad);
             }
 
             @Override
@@ -211,4 +213,6 @@ public class Fragment_home extends Fragment {
         });
 
     }
+
+
 }

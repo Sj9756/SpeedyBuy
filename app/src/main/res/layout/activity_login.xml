@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
-        android:src="@drawable/loginb1"/>
+        android:src="@drawable/background_of_login_activity"/>
  <TextView
      android:id="@+id/login_text"
      android:layout_width="wrap_content"
@@ -58,7 +58,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true">
-    <include layout="@layout/loginform_layout"/>
+    <include layout="@layout/layout_for_loginform"/>
 </LinearLayout>
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationView"

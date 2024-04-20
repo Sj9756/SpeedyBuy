@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <item android:title="@string/shop"
     android:id="@+id/cart_toolbar"
-    android:icon="@drawable/cart_toolbar"
+    android:icon="@drawable/ic_cart_toolbar"
     app:showAsAction="always"/>
     <item android:title="@string/wishlist"
         android:id="@+id/wish_toolbar"
-        android:icon="@drawable/heart_unpressed"
+        android:icon="@drawable/ic_heart_unpressed"
         app:showAsAction="ifRoom"/>
 </menu>

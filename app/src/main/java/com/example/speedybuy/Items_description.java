@@ -97,7 +97,7 @@ public class Items_description extends AppCompatActivity {
         iconSetter = getWishlistIconColor();
         MenuItem menuItem = menu.findItem(R.id.wish_toolbar);
         if (iconSetter) {
-            menuItem.setIcon(R.drawable.heart_pressed);
+            menuItem.setIcon(R.drawable.ic_heart_pressed);
         }
         return true;
     }
@@ -109,7 +109,7 @@ public class Items_description extends AppCompatActivity {
             int rid = item.getItemId();
             if (rid == R.id.wish_toolbar) {
                 if (iconSetter) {
-                    item.setIcon(R.drawable.heart_unpressed);
+                    item.setIcon(R.drawable.ic_heart_unpressed);
                     items.deleteRecord(id);
                     if (fragment_name.equals("fragment_wishlist")) {
                         RecyclerView recyclerView = Fragment_wishlist.recyclerView_wishlist;
@@ -122,7 +122,7 @@ public class Items_description extends AppCompatActivity {
                     Snackbar.make(findViewById(android.R.id.content), "Product is removed from wishlist", Snackbar.LENGTH_SHORT).show();
                     iconSetter = false;
                 } else {
-                    item.setIcon(R.drawable.heart_pressed);
+                    item.setIcon(R.drawable.ic_heart_pressed);
                     items.insertRecord(id,imageUrl,heading_text,subheading_text,item_price,rating_text);
                     if (fragment_name.equals("fragment_wishlist")) {
                         RecyclerView recyclerView = Fragment_wishlist.recyclerView_wishlist;
@@ -134,7 +134,7 @@ public class Items_description extends AppCompatActivity {
                     }
                     Snackbar.make(findViewById(android.R.id.content), "Product is added to wishlist", Snackbar.LENGTH_SHORT)
                             .setAction("Undo", v -> {
-                                item.setIcon(R.drawable.heart_unpressed);
+                                item.setIcon(R.drawable.ic_heart_unpressed);
                                 items.deleteRecord(id);
                                 iconSetter = false;
                                 if (fragment_name.equals("fragment_wishlist")) {

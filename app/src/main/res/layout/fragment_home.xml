@@ -1,324 +1,258 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollview_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical"
+    android:fillViewport="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".fragmants.Fragment_home">
 
-    <ScrollView
 
-        android:id="@+id/scrollview_home"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/search_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:orientation="vertical">
+            android:layout_margin="20dp"
+            android:elevation="11dp"
+            app:cardCornerRadius="12dp">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/search_card"
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/search"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:elevation="11dp"
-                app:cardCornerRadius="12dp">
+                android:layout_height="wrap_content" />
+        </androidx.cardview.widget.CardView>
 
-                <androidx.appcompat.widget.SearchView
-                    android:id="@+id/search"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </androidx.cardview.widget.CardView>
+        <include layout="@layout/layout_for_image_slider_view" />
 
-            <include layout="@layout/image_slider_view" />
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:scrollbars="none">
 
-            <HorizontalScrollView
+            <LinearLayout
+                android:id="@+id/category_linearlayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:scrollbars="none">
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
 
                 <LinearLayout
-                    android:id="@+id/category_linearlayout"
+                    android:id="@+id/home_beauty"
+                    style="@style/category_linearlayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp">
-
-                    <LinearLayout
-                        android:id="@+id/home_beauty"
-                        style="@style/category_linearlayout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            style="@style/style_circular"
-                            android:src="@drawable/beauty" />
-
-                        <TextView
-                            style="@style/style_circular_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/beauty" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/home_ethnic"
-                        style="@style/category_linearlayout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            style="@style/style_circular"
-                            android:src="@drawable/fashion_man" />
-
-                        <TextView
-                            style="@style/style_circular_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/ethnic_sets" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/home_fashion"
-                        style="@style/category_linearlayout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            style="@style/style_circular"
-                            android:src="@drawable/fashion_women" />
-
-                        <TextView
-                            style="@style/style_circular_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/fashion" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/home_mens"
-                        style="@style/category_linearlayout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            style="@style/style_circular"
-                            android:src="@drawable/man" />
-
-                        <TextView
-                            style="@style/style_circular_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/mens" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/home_accessories"
-                        style="@style/category_linearlayout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            style="@style/style_circular"
-                            android:src="@drawable/accessories" />
-
-                        <TextView
-                            style="@style/style_circular_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/accessories" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/home_kid"
-                        style="@style/category_linearlayout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            style="@style/style_circular"
-                            android:src="@drawable/kids_clothes" />
-
-                        <TextView
-                            style="@style/style_circular_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/kids" />
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </HorizontalScrollView>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/deal_of_the_day"
-                android:backgroundTint="#4392F9">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <TextView
-                        style="@style/home_text_view_special_offers1"
-                        android:text="@string/deal_of_the_day" />
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        style="@style/style_circular"
+                        android:src="@drawable/cat_beauty" />
 
                     <TextView
-                        android:id="@+id/home_remaining"
-                        style="@style/home_text_view_special_offers2"
-                        android:text="@string/time_22h_55m_20s_remaining"
-                        app:drawableStartCompat="@drawable/clock" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/view_all_home"
-                    style="@style/home_text_view_special_offers3"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerInParent="true"
-                    android:background="@drawable/view_all_back"
-                    android:foreground="?attr/selectableItemBackgroundBorderless"
-                    android:paddingStart="5dp"
-                    android:paddingEnd="15dp"
-                    tools:ignore="RelativeOverlap" />
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/suggested_for_you"
-                style="@style/home_section_text"
-                android:text="@string/suggested_for_you" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view_home"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp" />
-
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/deal_of_the_day"
-                android:backgroundTint="#FD6E87">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        style="@style/home_text_view_special_offers1"
-                        android:text="@string/trending_products" />
-
-                    <TextView
-                        android:id="@+id/home_last_date"
-                        style="@style/home_text_view_special_offers2"
-                        android:text="@string/last_date"
-                        app:drawableStartCompat="@drawable/calender" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/view_all_home_calender"
-                    style="@style/home_text_view_special_offers3"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerInParent="true"
-                    android:background="@drawable/view_all_back"
-                    android:foreground="?attr/selectableItemBackgroundBorderless"
-                    android:paddingStart="5dp"
-                    android:paddingEnd="15dp"
-                    tools:ignore="RelativeOverlap" />
-            </RelativeLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view_home_trending"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:nestedScrollingEnabled="false" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/home_linner_layout_background"
-                android:orientation="vertical">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:scaleType="fitXY"
-                    android:contentDescription="@string/summer_sale"
-                    android:src="@drawable/summer_banner" />
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-                    <LinearLayout
+                        style="@style/style_circular_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:paddingBottom="10dp"
-                        android:orientation="vertical">
+                        android:text="@string/beauty" />
+                </LinearLayout>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="New Arrivals"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Summer’ 25 Collections"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:layout_width="100dp"
-                        android:layout_height="35dp"
-                        android:textAllCaps="false"
-                        android:gravity="center"
-                        android:layout_marginEnd="10dp"
-                        android:background="@drawable/view_all_btn_back"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerInParent="true"
-                        android:drawableEnd="@drawable/arrow"
-                        android:text="@string/view_all"
-                        android:paddingEnd="10dp"
-                        android:paddingStart="2dp"
-                        android:textColor="@color/white" />
-                </RelativeLayout>
+                <LinearLayout
+                    android:id="@+id/home_ethnic"
+                    style="@style/category_linearlayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        style="@style/style_circular"
+                        android:src="@drawable/cat_ethnic" />
+
+                    <TextView
+                        style="@style/style_circular_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ethnic_sets" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/home_fashion"
+                    style="@style/category_linearlayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        style="@style/style_circular"
+                        android:src="@drawable/ic_fashion_women" />
+
+                    <TextView
+                        style="@style/style_circular_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fashion" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/home_mens"
+                    style="@style/category_linearlayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        style="@style/style_circular"
+                        android:src="@drawable/cat_man" />
+
+                    <TextView
+                        style="@style/style_circular_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mens" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/home_accessories"
+                    style="@style/category_linearlayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        style="@style/style_circular"
+                        android:src="@drawable/cat_accessories" />
+
+                    <TextView
+                        style="@style/style_circular_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/accessories" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/home_kid"
+                    style="@style/category_linearlayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        style="@style/style_circular"
+                        android:src="@drawable/cat_kids" />
+
+                    <TextView
+                        style="@style/style_circular_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/kids" />
+                </LinearLayout>
 
             </LinearLayout>
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:contentDescription="@string/summer_sale"
-                android:src="@drawable/shoes_sale_banner" />
-        </LinearLayout>
 
-    </ScrollView>
-</RelativeLayout>
+        </HorizontalScrollView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/shape_for_event_layout"
+            android:backgroundTint="#4392F9">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/home_text_view_special_offers1"
+                    android:text="@string/deal_of_the_day" />
+
+                <TextView
+                    android:id="@+id/event_time_text_view"
+                    style="@style/home_text_view_special_offers2"
+                    android:text="@string/time_22h_55m_20s_remaining"
+                    app:drawableStartCompat="@drawable/ic_clock" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/event_dod_btn"
+                style="@style/home_text_view_special_offers3"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:background="@drawable/shape_for_view_all_text_view"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:paddingStart="5dp"
+                android:paddingEnd="15dp"
+                tools:ignore="RelativeOverlap" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/suggested_for_you"
+            style="@style/home_section_text"
+            android:text="@string/suggested_for_you" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_suggested"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/shape_for_event_layout"
+            android:backgroundTint="#FD6E87">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/home_text_view_special_offers1"
+                    android:text="@string/trending_products" />
+
+                <TextView
+                    android:id="@+id/event_date_text_view"
+                    style="@style/home_text_view_special_offers2"
+                    android:text="@string/last_date"
+                    app:drawableStartCompat="@drawable/ic_calender" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/event_tp_btn"
+                style="@style/home_text_view_special_offers3"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:background="@drawable/shape_for_view_all_text_view"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:paddingStart="5dp"
+                android:paddingEnd="15dp"
+                tools:ignore="RelativeOverlap" />
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_trending_products"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:nestedScrollingEnabled="false"
+            android:layout_marginEnd="10dp" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

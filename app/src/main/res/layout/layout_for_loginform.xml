@@ -68,8 +68,8 @@
         android:layout_marginTop="20dp"
         android:drawablePadding="5dp"
         android:text="@string/sign_up_text"
-        app:drawableEndCompat="@drawable/line"
-        app:drawableStartCompat="@drawable/line" />
+        app:drawableEndCompat="@drawable/ic_line"
+        app:drawableStartCompat="@drawable/ic_line" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -80,14 +80,14 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/facebook" />
+            android:background="@drawable/ic_facebook" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/bt_sign_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:background="@drawable/google" />
+            android:background="@drawable/ic_google" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
