@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.example.speedybuy.fragmants.Fragment_home;
-import com.example.speedybuy.fragmants.Fragment_setting;
-import com.example.speedybuy.fragmants.Fragment_wishlist;
+import com.example.speedybuy.fragments.Fragment_home;
+import com.example.speedybuy.fragments.Fragment_setting;
+import com.example.speedybuy.fragments.Fragment_wishlist;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
 

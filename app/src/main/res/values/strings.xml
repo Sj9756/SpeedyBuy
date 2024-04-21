@@ -56,4 +56,11 @@
     <string name="trending_products">Trending Products</string>
     <string name="last_date">Last Date 29/04/24</string>
     <string name="summer_sale">summer_sale</string>
+    <string name="best_deal_for_kids">Best deal for kids</string>
+    <string name="accessories_full">Accessories</string>
+    <string name="banner_summer_sale">banner_summer_sale</string>
+    <string name="sponsored">Sponsored</string>
+    <string name="up_to_80_off">up to 80% Off</string>
+    <string name="summer_25_collections">Summer’ 25 Collections</string>
+    <string name="new_arrivals">New Arrivals</string>
 </resources>

@@ -22,7 +22,7 @@ import com.bumptech.glide.Glide;
 import com.example.speedybuy.Adapters.Item_list_recy_adapter;
 import com.example.speedybuy.Adapters.Items_list;
 import com.example.speedybuy.database.Database_items;
-import com.example.speedybuy.fragmants.Fragment_wishlist;
+import com.example.speedybuy.fragments.Fragment_wishlist;
 import com.example.speedybuy.key.Ikey;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.snackbar.Snackbar;
