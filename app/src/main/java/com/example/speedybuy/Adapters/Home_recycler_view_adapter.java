@@ -19,7 +19,7 @@ import com.example.speedybuy.key.Ikey;
 
 import java.util.ArrayList;
 
-class Home_View_Holder extends RecyclerView.ViewHolder {
+ class Home_View_Holder extends RecyclerView.ViewHolder {
     LinearLayout suggested_linear_layout;
     ImageView product;
     TextView heading, subheading, price;
@@ -33,6 +33,7 @@ class Home_View_Holder extends RecyclerView.ViewHolder {
     }
 }
 public class Home_recycler_view_adapter extends RecyclerView.Adapter<Home_View_Holder> {
+
 ArrayList<Items_list>itemsLists;
 Context context;
     String fragment_name;
@@ -59,20 +60,17 @@ Context context;
         holder.price.setText(price);
         String url = currentItem.imageUrl;
         Glide.with(context).load(url).into(holder.product);
-        holder.suggested_linear_layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent =new Intent(context, Items_description.class);
-                intent.putExtra(Ikey.FRAGMENT,fragment_name);
-                intent.putExtra(Ikey.POSITION,holder.getAdapterPosition());
-                intent.putExtra(Ikey.ID,currentItem.id);
-                intent.putExtra(Ikey.IMG,currentItem.imageUrl);
-                intent.putExtra(Ikey.HEADING,currentItem.heading);
-                intent.putExtra(Ikey.SUBHEADING,currentItem.subheading);
-                intent.putExtra(Ikey.PRICE,currentItem.price);
-                intent.putExtra(Ikey.RATING,currentItem.setRating);
-                context.startActivity(intent);
-            }
+        holder.suggested_linear_layout.setOnClickListener(v -> {
+            Intent intent =new Intent(context, Items_description.class);
+            intent.putExtra(Ikey.FRAGMENT,fragment_name);
+            intent.putExtra(Ikey.POSITION,holder.getAdapterPosition());
+            intent.putExtra(Ikey.ID,currentItem.id);
+            intent.putExtra(Ikey.IMG,currentItem.imageUrl);
+            intent.putExtra(Ikey.HEADING,currentItem.heading);
+            intent.putExtra(Ikey.SUBHEADING,currentItem.subheading);
+            intent.putExtra(Ikey.PRICE,currentItem.price);
+            intent.putExtra(Ikey.RATING,currentItem.setRating);
+            context.startActivity(intent);
         });
 
     }

@@ -56,16 +56,13 @@ public class Fragment_setting extends Fragment {
         Glide.with(this).load(url).into(profile);
         name.setText(Username);
         email_add.setText(emailid);
-        log_out.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharedPreferences.Editor editor=pref.edit();
-                editor.putBoolean("flag",false);
-                editor.apply();
-                Intent intent =new Intent(requireActivity(), Login.class);
-                startActivity(intent);
-                requireActivity().finish();
-            }
+        log_out.setOnClickListener(v -> {
+            SharedPreferences.Editor editor=pref.edit();
+            editor.putBoolean("flag",false);
+            editor.apply();
+            Intent intent =new Intent(requireActivity(), Login.class);
+            startActivity(intent);
+            requireActivity().finish();
         });
         return view;
     }

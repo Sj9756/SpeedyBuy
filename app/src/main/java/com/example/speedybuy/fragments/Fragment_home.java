@@ -15,7 +15,6 @@ import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.SearchView;
-import androidx.cardview.widget.CardView;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -60,7 +59,6 @@ public class Fragment_home extends Fragment {
     LinearLayout category_linearlayout;
     ImageSlider imageSlider;
     SearchView searchView;
-    CardView cardView;
     LottieAnimationView lottieAnimationView;
 
 
@@ -103,14 +101,9 @@ public class Fragment_home extends Fragment {
         event_tp_btn.setOnClickListener(v -> {
 
         });
-        summer_sale_btn.setOnClickListener(v -> {
-            Snackbar.make(requireContext(), v, "sale is coming soon", Snackbar.LENGTH_SHORT).setAction("Notify", new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        summer_sale_btn.setOnClickListener(v -> Snackbar.make(requireContext(), v, "sale is coming soon", Snackbar.LENGTH_SHORT).setAction("Notify", v1 -> {
 
-                }
-            }).show();
-        });
+        }).show());
         sponsored_btn.setOnClickListener(v -> {
 
         });

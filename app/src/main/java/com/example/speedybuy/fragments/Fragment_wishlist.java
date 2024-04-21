@@ -37,7 +37,7 @@ public class Fragment_wishlist extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_wishlist, container, false);
         recyclerView_wishlist = view.findViewById(R.id.recy_wishlist);
-        try(Database_items databaseItems = new Database_items(requireContext());){
+        try(Database_items databaseItems = new Database_items(requireContext())){
             ArrayList<Items_list> itemsLists = databaseItems.itemsListsArray();
             Item_list_recy_adapter ad = new Item_list_recy_adapter(requireContext(),itemsLists,"fragment_wishlist");
             recyclerView_wishlist.setLayoutManager(new GridLayoutManager(requireContext(), 2));
