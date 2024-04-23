@@ -36,10 +36,10 @@
     <string name="headind_name">Name</string>
     <string name="personal_details">Personal Details</string>
     <string name="splash_logo">splash_logo</string>
-    <string name="uk_7">UK 7</string>
-    <string name="uk_8">UK 8</string>
-    <string name="uk_9">UK 9</string>
-    <string name="uk_10">UK 10</string>
+    <string name="M">M</string>
+    <string name="L">L</string>
+    <string name="XL">XL</string>
+    <string name="XXL">XXL</string>
     <string name="size_uk">Size:</string>
     <string name="add_to_cart">Add to cart</string>
     <string name="buy_now">Buy now</string>
@@ -63,4 +63,8 @@
     <string name="up_to_80_off">up to 80% Off</string>
     <string name="summer_25_collections">Summer’ 25 Collections</string>
     <string name="new_arrivals">New Arrivals</string>
+    <string name="qty_1">Qty 1</string>
+    <string name="delivery_date">Delivery by sat Apr 27 |</string>
+    <string name="delivery_type">FREE Delivery</string>
+    <string name="remove">remove</string>
 </resources>

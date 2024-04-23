@@ -29,7 +29,6 @@ public class MySplash extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             if(flag){
                 intent=new Intent(MySplash.this, MainActivity.class);
-
             }
             else {
                 intent=new Intent(MySplash.this,firstActivity.class);

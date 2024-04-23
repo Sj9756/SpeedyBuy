@@ -60,9 +60,9 @@ public class Fragment_setting extends Fragment {
             SharedPreferences.Editor editor=pref.edit();
             editor.putBoolean("flag",false);
             editor.apply();
-            Intent intent =new Intent(requireActivity(), Login.class);
-            startActivity(intent);
-            requireActivity().finish();
+            Intent intent = new Intent(activity, Login.class);
+            activity.startActivity(intent);
+            activity.finish();
         });
         return view;
     }

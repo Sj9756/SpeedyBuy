@@ -2,8 +2,10 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.SpeedyBuy" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/white</item>
+        <item name="android:statusBarColor">@color/Primary</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>
+
     <style name="Theme.SpeedyBuy" parent="Base.Theme.SpeedyBuy" />
 
     <style name="Widget.App.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
@@ -12,21 +14,23 @@
 
     <style name="ThemeOverlay.App.BottomNavigationView" parent="">
         <item name="colorSurfaceContainer">@color/white</item>
-        <item name="colorOnSecondaryContainer">@color/appnav</item>
+        <item name="colorOnSecondaryContainer">@color/item_color</item>
         <item name="colorSecondaryContainer">@color/second_container</item>
     </style>
-<style name="size_chose" parent="Theme.SpeedyBuy">
-    <item name="android:layout_height">wrap_content</item>
-    <item name="android:layout_width">wrap_content</item>
-    <item name="android:textStyle">bold</item>
-    <item name="android:textColor">@color/colorPrimary</item>
-    <item name="android:clickable">true</item>
-    <item name="android:focusable">true</item>
-    <item name="android:onClick">onOptionSelected</item>
-    <item name="android:gravity">center</item>
-    <item name="android:layout_marginEnd">5dp</item>
-    <item name="android:background">@drawable/shape_for_size_chooser</item>
-</style>
+
+    <style name="size_chose" parent="Theme.SpeedyBuy">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:onClick">onOptionSelected</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginEnd">5dp</item>
+        <item name="android:background">@drawable/shape_for_size_chooser</item>
+    </style>
+
     <style name="Buy_cart" parent="Theme.SpeedyBuy">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -36,14 +40,17 @@
         <item name="android:textSize">16sp</item>
         <item name="android:foreground">?attr/selectableItemBackground</item>
     </style>
+
     <style name="category_linearlayout" parent="Theme.SpeedyBuy">
         <item name="android:background">?attr/selectableItemBackground</item>
         <item name="android:layout_marginEnd">15dp</item>
     </style>
+
     <style name="style_circular" parent="Theme.SpeedyBuy">
         <item name="android:layout_width">60dp</item>
         <item name="android:layout_height">60dp</item>
     </style>
+
     <style name="style_circular_text" parent="Theme.SpeedyBuy">
         <item name="android:gravity">center</item>
     </style>
@@ -55,9 +62,7 @@
         <item name="android:layout_margin">10dp</item>
         <item name="android:textStyle">bold</item>
     </style>
-    <style name="home_commen_linear_layout" parent="Theme.SpeedyBuy">
 
-    </style>
     <style name="home_text_view_special_offers" parent="Theme.SpeedyBuy">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -66,20 +71,21 @@
         <item name="android:layout_marginTop">3dp</item>
         <item name="android:gravity">center</item>
     </style>
+
     <style name="home_text_view_special_offers1" parent="home_text_view_special_offers">
         <item name="android:textSize">18sp</item>
     </style>
-    <style name="home_text_view_special_offers2" parent="home_text_view_special_offers">
 
+    <style name="home_text_view_special_offers2" parent="home_text_view_special_offers">
         <item name="android:drawablePadding">5dp</item>
         <item name="android:textSize">14sp</item>
     </style>
+
     <style name="home_text_view_special_offers3" parent="home_text_view_special_offers">
         <item name="android:text">@string/view_all</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_marginEnd">10dp</item>
         <item name="drawableEndCompat">@drawable/ic_arrow</item>
-
     </style>
 </resources>

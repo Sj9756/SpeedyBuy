@@ -114,7 +114,5 @@ public class Mens extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("All_product");
         myRef.child("kids").setValue(ethnic);
-
-
     }
 }

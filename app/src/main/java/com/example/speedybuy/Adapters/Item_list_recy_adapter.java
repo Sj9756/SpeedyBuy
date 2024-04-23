@@ -54,7 +54,7 @@ public class Item_list_recy_adapter extends RecyclerView.Adapter<ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_for_items_fragment, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_for_item, parent, false);
         return  new ViewHolder(view);
     }
 

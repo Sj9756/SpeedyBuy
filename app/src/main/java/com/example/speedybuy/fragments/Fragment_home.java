@@ -52,7 +52,7 @@ public class Fragment_home extends Fragment {
     TextView event_dod_btn, event_time_text_view, event_date_text_view, event_tp_btn;
     AppCompatButton summer_sale_btn;
     ImageView sponsored_btn;
-    NestedScrollView scrollview_home;
+    LinearLayout home_fragment_layout;
 
     RecyclerView recycler_view_suggested, recycler_view_trending_products, recycler_view_home_kids_deal;
     List<SlideModel> slideModelList = new ArrayList<>();
@@ -81,7 +81,8 @@ public class Fragment_home extends Fragment {
         event_tp_btn = view.findViewById(R.id.event_tp_btn);
         summer_sale_btn = view.findViewById(R.id.summer_sale_btn);
         sponsored_btn = view.findViewById(R.id.sponsored_btn);
-        scrollview_home = view.findViewById(R.id.scrollview_home);
+        home_fragment_layout = view.findViewById(R.id.home_fragment_layout);
+        home_fragment_layout.setVisibility(View.INVISIBLE);
         searchView = view.findViewById(R.id.search);
         imageSlider = view.findViewById(R.id.image_slider);
         recycler_view_home_kids_deal = view.findViewById(R.id.recycler_view_home_kids_deal);
@@ -109,7 +110,7 @@ public class Fragment_home extends Fragment {
         });
         Slider_images_data();
         getDataFor_recycler_view_suggested();
-        getDataFor_recycler_view_trending_products();
+        getDataFor_recycler_view_accessories();
         getDataFor_recycler_view_home_kids_deal();
         return view;
 
@@ -155,21 +156,29 @@ public class Fragment_home extends Fragment {
 
             @Override
             public void run() {
-                int hour = remainingTime / 3600;
-                int minutes = (remainingTime % 3600) / 60;
-                int seconds = remainingTime % 60;
-                String formattedTime = String.format(Locale.US, "%02d" + "h " + "%02d" + "m " + "%02d" + "s remaining", hour, minutes, seconds);
-                requireActivity().runOnUiThread(() -> event_time_text_view.setText(formattedTime));
+                if (isAdded()) {
+                    int hour = remainingTime / 3600;
+                    int minutes = (remainingTime % 3600) / 60;
+                    int seconds = remainingTime % 60;
+                    String formattedTime = String.format(Locale.US, "%02d" + "h " + "%02d" + "m " + "%02d" + "s remaining", hour, minutes, seconds);
+                    requireActivity().runOnUiThread(() -> {
+                        if (isAdded()) {
+                            event_time_text_view.setText(formattedTime);
+                        }
+                    });
 
-                if (remainingTime <= 0) {
+                    if (remainingTime <= 0) {
+                        timer.cancel();
+                    }
+                    remainingTime--;
+                } else {
                     timer.cancel();
-
                 }
-                remainingTime--;
             }
         };
         timer.scheduleAtFixedRate(task, 0, 1000);
     }
+
 
     private void getDataFor_recycler_view_suggested() {
         ArrayList<Items_list> item_array = new ArrayList<>();
@@ -184,7 +193,7 @@ public class Fragment_home extends Fragment {
                 }
                 lottieAnimationView.setVisibility(View.INVISIBLE);
                 lottieAnimationView.setProgress(0);
-                scrollview_home.setVisibility(View.VISIBLE);
+                home_fragment_layout.setVisibility(View.VISIBLE);
                 Home_recycler_view_adapter ad = new Home_recycler_view_adapter(item_array, requireContext(), "Fragment_home");
                 LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
                 recycler_view_suggested.setLayoutManager(layoutManager);
@@ -199,7 +208,7 @@ public class Fragment_home extends Fragment {
 
     }
 
-    private void getDataFor_recycler_view_trending_products() {
+    private void getDataFor_recycler_view_accessories() {
         ArrayList<Items_list> item_array = new ArrayList<>();
         DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference("All_product");
 
