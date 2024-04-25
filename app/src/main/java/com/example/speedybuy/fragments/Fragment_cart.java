@@ -18,6 +18,7 @@ import com.example.speedybuy.Adapters.Item_list_recy_adapter;
 import com.example.speedybuy.Adapters.Items_list;
 import com.example.speedybuy.R;
 import com.example.speedybuy.category.Mens;
+import com.example.speedybuy.database.Database_cart;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -50,28 +51,13 @@ public class Fragment_cart extends Fragment {
         return view;
     }
     private void getData() {
-
-        DatabaseReference itemsRef = FirebaseDatabase.getInstance().getReference("cart_item");
-        itemsRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot childSnapshot : snapshot.getChildren()) {
-                    Items_list itemList = childSnapshot.getValue(Items_list.class);
-                    items_array.add(itemList);
-                }
-                Cart_recycler_adapter ad=new Cart_recycler_adapter(items_array,requireContext());
-                cart_recycler.setLayoutManager(new LinearLayoutManager(requireContext()));
-                cart_recycler.setAdapter(ad);
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-
+        try (Database_cart databaseCart =new Database_cart(requireContext())){
+           items_array= databaseCart.itemsListsArray();
+           cart_recycler.setLayoutManager(new LinearLayoutManager(requireContext()));
+           Cart_recycler_adapter ad=new Cart_recycler_adapter(items_array,requireContext(),"Fragment_cart");
+           cart_recycler.setAdapter(ad);
+        }
     }
+
 
 }

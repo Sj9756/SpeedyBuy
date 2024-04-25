@@ -2,10 +2,6 @@ package com.example.speedybuy.Adapters;
 
 public class Items_list {
 
-    public String size;
-
-
-
     public int id;
     public String imageUrl;
     public String heading;
@@ -26,12 +22,4 @@ public class Items_list {
         this.id = id;
     }
 
-    public Items_list(String size, String imageUrl, String subheading, int price, float setRating,int id) {
-        this.size = size;
-        this.id = id;
-        this.imageUrl = imageUrl;
-        this.subheading = subheading;
-        this.price = price;
-        this.setRating = setRating;
-    }
 }

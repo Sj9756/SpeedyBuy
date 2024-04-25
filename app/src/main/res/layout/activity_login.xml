@@ -64,7 +64,7 @@
         android:id="@+id/animationView"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        app:lottie_rawRes="@raw/loading"
+        app:lottie_rawRes="@raw/g_log_in_loading"
         app:lottie_autoPlay="true"
         android:visibility="gone"
         android:layout_centerInParent="true"

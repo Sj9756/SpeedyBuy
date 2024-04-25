@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.speedybuy.Adapters.Item_list_recy_adapter;
 import com.example.speedybuy.Adapters.Items_list;
+import com.example.speedybuy.database.Database_cart;
 import com.example.speedybuy.database.Database_wishlist;
 import com.example.speedybuy.fragments.Fragment_wishlist;
 import com.example.speedybuy.key.Ikey;
@@ -39,8 +40,8 @@ public class Items_description extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationItemView;
     LinearLayout size_layout;
-    private TextView selectedTextView;
-    TextView selected_size;
+    private TextView selectedTextView, selected_size;
+
     String fragment_name;
     int position;
     String imageUrl;
@@ -48,13 +49,14 @@ public class Items_description extends AppCompatActivity {
     String subheading_text;
     float rating_text;
     int id, item_price;
-    boolean iconSetter = false;
 
 
+   private boolean iconSetter = false;
+   private boolean textSetterCart = false;
     MaterialToolbar toolbar;
     ImageView product_image_1, product_image_2, product_image_3;
     TextView heading_view, subheading_view, price_view;
-    AppCompatButton add_cart_btn,buy_btn;
+    AppCompatButton add_cart_btn, buy_btn;
     RatingBar ratingBar_view;
 
     @Override
@@ -62,102 +64,45 @@ public class Items_description extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_items_discription);
         initializeViews();
-
-
+        addActionBar();
+        set_content();
+        setAdd_cart_btn();
 //        BadgeDrawable badgeWishlist = bottomNavigationItemView.getOrCreateBadge(R.id.navigation_wishlist);
 //        badgeWishlist.setVisible(true);
 //        badgeWishlist.setNumber(10);
 
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle("");
-        }
-       set_content();
+
         add_cart_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                insertdata();
+                insertData();
             }
         });
+
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.app_bar_menu, menu);
-        MenuItem menuItem = menu.findItem(R.id.wish_toolbar);
-        try (Database_wishlist databaseItems = new Database_wishlist(this)) {
-            iconSetter=databaseItems.dataExist(id);
-            if (iconSetter) {
-                menuItem.setIcon(R.drawable.ic_heart_pressed);
-            }
-        }
+        setWishlistIcon(menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        try (Database_wishlist items = new Database_wishlist(Items_description.this)
-        ) {
-            int rid = item.getItemId();
-            if (rid == R.id.wish_toolbar) {
-                if (iconSetter) {
-                    item.setIcon(R.drawable.ic_heart_unpressed);
-                    items.deleteRecord(id);
-                    if (fragment_name.equals("fragment_wishlist")) {
-                        RecyclerView recyclerView = Fragment_wishlist.recyclerView_wishlist;
-                        Item_list_recy_adapter ad = (Item_list_recy_adapter) recyclerView.getAdapter();
-                        if (ad != null) {
-                            ad.items.remove(position);
-                            ad.notifyItemRemoved(position);
-                        }
-                    }
-                    Snackbar.make(findViewById(android.R.id.content), "Product is removed from wishlist", Snackbar.LENGTH_SHORT).show();
-                    iconSetter = false;
-                } else {
-                    item.setIcon(R.drawable.ic_heart_pressed);
-                    items.insertRecord(id, imageUrl, heading_text, subheading_text, item_price, rating_text);
-                    if (fragment_name.equals("fragment_wishlist")) {
-                        RecyclerView recyclerView = Fragment_wishlist.recyclerView_wishlist;
-                        Item_list_recy_adapter ad = (Item_list_recy_adapter) recyclerView.getAdapter();
-                        if (ad != null) {
-                            ad.items.add(position, new Items_list(id, imageUrl, heading_text, subheading_text, item_price, rating_text));
-                            ad.notifyItemChanged(position);
-                        }
-                    }
-                    Snackbar.make(findViewById(android.R.id.content), "Product is added to wishlist", Snackbar.LENGTH_SHORT)
-                            .setAction("Undo", v -> {
-                                item.setIcon(R.drawable.ic_heart_unpressed);
-                                items.deleteRecord(id);
-                                iconSetter = false;
-                                if (fragment_name.equals("fragment_wishlist")) {
-                                    RecyclerView recyclerView = Fragment_wishlist.recyclerView_wishlist;
-                                    Item_list_recy_adapter ad = (Item_list_recy_adapter) recyclerView.getAdapter();
-                                    if (ad != null) {
-                                        ad.items.remove(position);
-                                        ad.notifyItemRemoved(position);
-                                    }
-                                }
-                            }).show();
-                    iconSetter = true;
-                }
-            }
-            else if(rid==R.id.cart_toolbar){
-                Intent intent = new Intent(this, MainActivity.class);
-                intent.putExtra("loadFragment", "cart");
-                startActivity(intent);
-            }
-        } catch (Exception e) {
-            Log.e("Items_description", "Error occurred", e);
+        int rid = item.getItemId();
+        if (rid == R.id.wish_toolbar) {
+            WishlistAction(item);
+        } else if (rid == R.id.cart_toolbar) {
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("loadFragment", "cart");
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
-    @Override
-    public boolean onSupportNavigateUp() {
-        finish();
-        return true;
-    }
+
 
     private void handleSelection(TextView textView) {
         if (selectedTextView != null) {
@@ -169,7 +114,7 @@ public class Items_description extends AppCompatActivity {
         textView.setSelected(true);
         selectedTextView = textView;
         selected_size = findViewById(R.id.selected_size);  //this is conform size text view Size=?
-        String size="Size: "+selectedTextView.getText();
+        String size = "Size: " + selectedTextView.getText();
         selected_size.setText(size);
     }
 
@@ -177,7 +122,7 @@ public class Items_description extends AppCompatActivity {
         handleSelection((TextView) view);
     }
 
-    private void set_content(){
+    private void set_content() {
         Intent intent = getIntent();
         fragment_name = intent.getStringExtra(Ikey.FRAGMENT);
         position = intent.getIntExtra(Ikey.POSITION, -1);
@@ -213,45 +158,94 @@ public class Items_description extends AppCompatActivity {
     }
 
 
-    private void insertdata() {
-        ArrayList<Items_list>item=new ArrayList<>();
-        if (selected_size==null){
-            Toast.makeText(this, "please select size", Toast.LENGTH_SHORT).show();
+    private void insertData() {
+        if(textSetterCart){
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("loadFragment", "cart");
+            startActivity(intent);
         }
         else {
-            Items_list itemsListo=new Items_list(selected_size.getText().toString(),imageUrl,subheading_text,item_price,rating_text,id);
-            DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("cart_item");
-            myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    boolean itemExists = false;
-                    for (DataSnapshot childSnapshot : snapshot.getChildren()) {
-                        Items_list itemList = childSnapshot.getValue(Items_list.class);
-                        item.add(itemList);
-                        assert itemList != null;
-                        if(itemsListo.id==itemList.id){
-                            itemExists=true;
-                            break;
-                        }
-                    }
-                    if(itemExists){
-                        Toast.makeText(Items_description.this, "item already in cart", Toast.LENGTH_SHORT).show();
-                    }
-                    else {
-                        item.add(itemsListo);
-                        myRef.setValue(item);
-                    }
-
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
+            try (Database_cart cartItem=new Database_cart(Items_description.this)){
+                cartItem.insertRecord(id,imageUrl,heading_text,subheading_text,item_price,rating_text);
+                add_cart_btn.setText(getString(R.string.go_to_cart));
+                textSetterCart=true;
+            }catch (Exception e){
+                Log.e("cartItem","Error occurred", e);
+            }
         }
-
-
     }
 
+    private void addActionBar() {
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle("");
+        }
+    }
+
+    private void setWishlistIcon(Menu menu) {
+        MenuItem menuItem = menu.findItem(R.id.wish_toolbar);
+        try (Database_wishlist databaseItems = new Database_wishlist(this)) {
+            iconSetter = databaseItems.dataExist(id);
+            if (iconSetter) {
+                menuItem.setIcon(R.drawable.ic_heart_pressed);
+            }
+        }
+    }
+
+    private void WishlistAction(@NonNull MenuItem item) {
+        try (Database_wishlist items = new Database_wishlist(Items_description.this)) {
+            if (iconSetter) {
+                item.setIcon(R.drawable.ic_heart_unpressed);
+                items.deleteRecord(id);
+                WishlistRecyclerViewNotify();
+                iconSetter = false;
+                Snackbar.make(findViewById(android.R.id.content), "Product is removed from wishlist", Snackbar.LENGTH_SHORT).show();
+            } else {
+                item.setIcon(R.drawable.ic_heart_pressed);
+                items.insertRecord(id, imageUrl, heading_text, subheading_text, item_price, rating_text);
+                WishlistRecyclerViewNotify();
+                iconSetter = true;
+                Snackbar.make(findViewById(android.R.id.content), "Product is added to wishlist", Snackbar.LENGTH_SHORT)
+                        .setAction("Undo", v -> {
+                            item.setIcon(R.drawable.ic_heart_unpressed);
+                            items.deleteRecord(id);
+                            WishlistRecyclerViewNotify();
+                            iconSetter = false;
+                        }).show();
+            }
+        } catch (Exception e) {
+            Log.e("WishlistAction", "Error occurred", e);
+        }
+    }
+
+    private void WishlistRecyclerViewNotify() {
+        if (fragment_name.equals("fragment_wishlist")) {
+            RecyclerView recyclerView = Fragment_wishlist.recyclerView_wishlist;
+            Item_list_recy_adapter ad = (Item_list_recy_adapter) recyclerView.getAdapter();
+            if (ad != null && iconSetter) {
+                ad.items.remove(position);
+                ad.notifyItemRemoved(position);
+
+            } else if (ad != null) {
+                ad.items.add(position, new Items_list(id, imageUrl, heading_text, subheading_text, item_price, rating_text));
+                ad.notifyItemChanged(position);
+                iconSetter = true;
+            }
+        }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+    }
+    private void setAdd_cart_btn(){
+        try (Database_cart databaseCart =new Database_cart(Items_description.this)){
+           textSetterCart= databaseCart.dataExist(id);
+            if(textSetterCart){
+                add_cart_btn.setText(getString(R.string.go_to_cart));
+            }
+        }
+    }
 }

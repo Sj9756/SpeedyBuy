@@ -67,4 +67,7 @@
     <string name="delivery_date">Delivery by sat Apr 27 |</string>
     <string name="delivery_type">FREE Delivery</string>
     <string name="remove">remove</string>
+    <string name="go_to_cart">Go to cart</string>
+    <string name="empty_cart_img">empty_cart_img</string>
+    <string name="your_cart_is_empty">Your cart is empty!</string>
 </resources>

@@ -287,4 +287,5 @@
 
         <include layout="@layout/layout_for_banner_shoes" />
     </LinearLayout>
+
 </androidx.core.widget.NestedScrollView>

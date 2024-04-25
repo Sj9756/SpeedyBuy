@@ -44,8 +44,6 @@ public class Fragment_wishlist extends Fragment {
             Item_list_recy_adapter ad = new Item_list_recy_adapter(requireContext(),itemsLists,"fragment_wishlist");
             recyclerView_wishlist.setLayoutManager(new GridLayoutManager(requireContext(), 2));
             recyclerView_wishlist.setAdapter(ad);
-
-
         }catch (Exception e){
             Log.d("errorDatabae",e.toString());
         }

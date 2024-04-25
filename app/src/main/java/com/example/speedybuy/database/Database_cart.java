@@ -12,11 +12,10 @@ import com.example.speedybuy.Adapters.Items_list;
 
 import java.util.ArrayList;
 
-public class Database_wishlist extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "ItemsDB";
-    public String TABLE_NAME = "Item";
+public class Database_cart extends SQLiteOpenHelper {
+    private static final String DATABASE_NAME = "CartDB";
+    public String TABLE_NAME = "Cart";
     private static final int DATABASE_V = 1;
-
     //column
     private static final String ID = "id";
     private static final String IMAGE_URL = "image_url";
@@ -24,8 +23,7 @@ public class Database_wishlist extends SQLiteOpenHelper {
     private static final String SUBHEADING = "subheading";
     private static final String PRICE = "price";
     private static final String RATING = "rating";
-
-    public Database_wishlist(@Nullable Context context) {
+    public Database_cart(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_V);
     }
 
@@ -33,7 +31,6 @@ public class Database_wishlist extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String create = "CREATE TABLE IF NOT EXISTS  " + TABLE_NAME + "(" + ID + " INT PRIMARY KEY, " + IMAGE_URL + " VARCHAR(200)," + HEADING + " VARCHAR(200)," + SUBHEADING + " VARCHAR(200)," + PRICE + " INT," + RATING + " FLOAT" + ");";
         db.execSQL(create);
-
     }
 
     @Override
@@ -41,7 +38,6 @@ public class Database_wishlist extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
-
     public ArrayList<Items_list> itemsListsArray() {
         SQLiteDatabase database = this.getReadableDatabase();
         ArrayList<Items_list> itemsLists = new ArrayList<>();
