@@ -1,7 +1,6 @@
 package com.example.speedybuy;
 
 import androidx.activity.OnBackPressedCallback;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,22 +17,20 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 import java.util.Objects;
 
+/** @noinspection deprecation*/
 public class Login extends AppCompatActivity {
     EditText Userid, Password;
     private FirebaseAuth mAuth;
 
     private GoogleSignInClient mGoogleSignInClient;
-    private ImageView button;
     LottieAnimationView lottieAnimationView;
     private final static int RC_SIGN_IN = 2;
     @Override
@@ -45,20 +42,15 @@ public class Login extends AppCompatActivity {
         lottieAnimationView = findViewById(R.id.animationView);
         Userid = findViewById(R.id.user_id);
         Password = findViewById(R.id.password_EditText);
-        button = findViewById(R.id.bt_sign_in);
+        ImageView button = findViewById(R.id.bt_sign_in);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                lottieAnimationView.setVisibility(View.VISIBLE);
-                signInWithGoogle();
-            }
+        button.setOnClickListener(v -> {
+            lottieAnimationView.setVisibility(View.VISIBLE);
+            signInWithGoogle();
         });
         OnBackPressedCallback ob = createOnBackPressed();
         getOnBackPressedDispatcher().addCallback(this, ob);
-
         mAuth = FirebaseAuth.getInstance();
-
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -67,17 +59,14 @@ public class Login extends AppCompatActivity {
     }
 
     private void signInWithGoogle() {
-        mGoogleSignInClient.signOut().addOnCompleteListener(this, new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-                    startActivityForResult(signInIntent, RC_SIGN_IN);
+        mGoogleSignInClient.signOut().addOnCompleteListener(this, task -> {
+            if (task.isSuccessful()) {
+                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+                startActivityForResult(signInIntent, RC_SIGN_IN);
 
-                } else {
-                    // Handle sign-out failure
-                    Toast.makeText(Login.this, "Failed to sign out.", Toast.LENGTH_SHORT).show();
-                }
+            } else {
+                // Handle sign-out failure
+                Toast.makeText(Login.this, "Failed to sign out.", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -91,7 +80,7 @@ public class Login extends AppCompatActivity {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
-                e.printStackTrace();
+                Log.e("ApiException", "Error occurred", e);
             }
         }
        else if (resultCode == RESULT_CANCELED && requestCode==RC_SIGN_IN) {
@@ -105,30 +94,27 @@ public class Login extends AppCompatActivity {
     private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            if (user != null) {
-                                SharedPreferences pref=getSharedPreferences("login",MODE_PRIVATE);
-                                SharedPreferences.Editor editor=pref.edit();
-                                editor.putBoolean("flag",true);
-                                editor.putString("name",user.getDisplayName());
-                                editor.putString("email",user.getEmail());
-                                String url= Objects.requireNonNull(user.getPhotoUrl()).toString();
-                                editor.putString("profile",url);
-                                editor.apply();
-                                Intent intent = new Intent(Login.this, MainActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                startActivity(intent);
-                                finish();
-                            }
-                        } else {
-                            Log.w("fail", "signInWithCredential:failure", task.getException());
-                            Toast.makeText(Login.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        if (user != null) {
+                            SharedPreferences pref=getSharedPreferences("login",MODE_PRIVATE);
+                            SharedPreferences.Editor editor=pref.edit();
+                            editor.putBoolean("flag",true);
+                            editor.putString("name",user.getDisplayName());
+                            editor.putString("email",user.getEmail());
+                            String url= Objects.requireNonNull(user.getPhotoUrl()).toString();
+                            editor.putString("profile",url);
+                            editor.apply();
+                            Intent intent = new Intent(Login.this, MainActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                            finish();
                         }
+                    } else {
+                        Log.w("fail", "signInWithCredential:failure", task.getException());
+                        Toast.makeText(Login.this, "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
                     }
                 });
     }

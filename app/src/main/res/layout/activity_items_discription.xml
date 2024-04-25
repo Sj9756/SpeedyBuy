@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Items_description">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar_item_dis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_for_toolbar_color" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:dividerColor="@color/dividerColor"
+                app:dividerThickness="5dp" />
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="400dp">
+
+                    <ImageView
+                        android:id="@+id/dis_item_image1"
+                        android:layout_width="360dp"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/product"
+                        android:src="@drawable/items_images" />
+
+                    <ImageView
+                        android:id="@+id/dis_item_image2"
+                        android:layout_width="384dp"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/product"
+                        android:src="@drawable/items_images" />
+
+                    <ImageView
+                        android:id="@+id/dis_item_image3"
+                        android:layout_width="384dp"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/product"
+                        android:src="@drawable/items_images" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/dis_heading_items"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/heading"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/dis_sub_heading_items"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="10dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="@string/text_description"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/dis_price_items"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="1dp"
+                    android:text="@string/price"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <RatingBar
+                    android:id="@+id/dis_rating_items"
+                    style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:progressTint="@color/rating_bar"
+                    android:rating="3.5" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/size_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/selected_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="@string/size_uk"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_size"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/size_chose"
+                        android:onClick="onOptionSelected"
+                        android:text="@string/M" />
+
+                    <TextView
+                        style="@style/size_chose"
+                        android:onClick="onOptionSelected"
+                        android:text="@string/L" />
+
+                    <TextView
+                        style="@style/size_chose"
+                        android:onClick="onOptionSelected"
+                        android:text="@string/XL" />
+
+                    <TextView
+                        style="@style/size_chose"
+                        android:onClick="onOptionSelected"
+                        android:text="@string/XXL" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:columnCount="2">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/add_cart_btn"
+            style="@style/Buy_cart"
+            android:background="@color/white"
+            android:text="@string/add_to_cart" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buy_btn"
+            style="@style/Buy_cart"
+            android:background="@color/colorPrimary"
+            android:text="@string/buy_now" />
+    </GridLayout>
+</RelativeLayout>

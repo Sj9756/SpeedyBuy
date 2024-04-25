@@ -3,7 +3,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimary">#ffc600</color>
-    <color name="appnav">#EB3030</color>
+    <color name="item_color">#EB3030</color>
     <color name="second_container">#8092F69F</color>
     <color name="rating_bar">#4CAF50</color>
+    <color name="Primary">#BCE9F8</color>
+    <color name="dividerColor">#377D7C7C</color>
 </resources>

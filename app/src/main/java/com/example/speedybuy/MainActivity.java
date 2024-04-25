@@ -3,55 +3,66 @@ package com.example.speedybuy;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 
-import com.example.speedybuy.fragmants.Fragment_home;
-import com.example.speedybuy.fragmants.Fragment_search;
-import com.example.speedybuy.fragmants.Fragment_setting;
-import com.example.speedybuy.fragmants.Fragment_wishlist;
+import com.airbnb.lottie.LottieAnimationView;
+import com.example.speedybuy.fragments.Fragment_cart;
+import com.example.speedybuy.fragments.Fragment_home;
+import com.example.speedybuy.fragments.Fragment_search;
+import com.example.speedybuy.fragments.Fragment_setting;
+import com.example.speedybuy.fragments.Fragment_wishlist;
+import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
-
 
 public class MainActivity extends AppCompatActivity {
 
-    BottomNavigationView bottomNavigationView;
-
+    LottieAnimationView lottieAnimationView;
+    public static BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bottomNavigationView = findViewById(R.id.navigation);
-        getFragment(Fragment_home.class);
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-                if (R.id.navigation_home == id) {
-                    getFragment(Fragment_home.class);
-                } else if (R.id.navigation_wishlist == id) {
-                    getFragment(Fragment_wishlist.class);
+        lottieAnimationView = findViewById(R.id.animationView_home);
+        gettingIntent();
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (R.id.navigation_home == id) {
+                getFragment(new Fragment_home(lottieAnimationView));
+            } else if (R.id.navigation_search == id) {
+                getFragment(new Fragment_search(lottieAnimationView));
+            } else if (R.id.navigation_cart == id) {
+                getFragment(new Fragment_cart(lottieAnimationView));
+            } else if (R.id.navigation_wishlist == id) {
+                getFragment(new Fragment_wishlist(lottieAnimationView));
+                item.setChecked(true);
+            } else if (R.id.navigation_setting == id) {
+                getFragment(new Fragment_setting(lottieAnimationView));
 
-                }
-                else if(R.id.navigation_setting ==id){
-                    getFragment(Fragment_setting.class);
-                }
-                return true;
             }
+            return true;
         });
-
-
-
-
     }
 
-    private void getFragment(@NonNull Class<? extends androidx.fragment.app.Fragment> fragmentClass) {
+    private void getFragment(@NonNull androidx.fragment.app.Fragment fragmentClass) {
         getSupportFragmentManager().beginTransaction()
                 .setReorderingAllowed(true)
                 .add(R.id.fragment_loader, fragmentClass, null)
                 .commit();
     }
-
+    private void gettingIntent(){
+        Intent intent = getIntent();
+        if (!intent.hasExtra("loadFragment")) {
+            getFragment(new Fragment_home(lottieAnimationView));   //this default fragment home
+        }
+       else if (intent.hasExtra("loadFragment")) {
+            String fragmentToLoad = intent.getStringExtra("loadFragment");
+            if (fragmentToLoad != null && fragmentToLoad.equals("cart")) {
+                getFragment(new Fragment_cart(lottieAnimationView));
+                bottomNavigationView.setSelectedItemId(R.id.navigation_cart);
+            }
+        }
+    }
 }

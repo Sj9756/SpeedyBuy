@@ -6,14 +6,19 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".MainActivity">
-
-
-
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_loader"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="80dp"/>
+<com.google.android.material.divider.MaterialDivider
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:dividerThickness="1dp"
+    android:layout_alignParentBottom="true"
+    app:lastItemDecorated="true"
+    android:layout_marginBottom="80dp"
+    app:dividerColor="#667D7C7C"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"
@@ -26,5 +31,13 @@
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_items" />
 
-
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView_home"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        app:lottie_rawRes="@raw/app_loading_ani"
+        app:lottie_autoPlay="true"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        app:lottie_loop="true"/>
 </RelativeLayout>
