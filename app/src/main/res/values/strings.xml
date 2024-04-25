@@ -70,4 +70,12 @@
     <string name="go_to_cart">Go to cart</string>
     <string name="empty_cart_img">empty_cart_img</string>
     <string name="your_cart_is_empty">Your cart is empty!</string>
+    <string name="price_2_items">Price (2 items)</string>
+    <string name="price_details">Price Details</string>
+    <string name="buy_more_amp_save_more"><![CDATA[Buy more & save more]]></string>
+    <string name="dis_price">- ₹20</string>
+    <string name="extra_dis">- ₹50</string>
+    <string name="discount">Discount</string>
+    <string name="delivery_charges">Delivery Charges</string>
+    <string name="your_wishlisht_is_empty">Your wishlist is empty!</string>
 </resources>

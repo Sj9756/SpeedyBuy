@@ -1,14 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".fragments.Fragment_cart">
 
-<androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/cart_recycler"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/cart_nested_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cart_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:id="@+id/price_chart_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:dividerColor="@color/dividerColor"
+                    app:dividerThickness="5dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/cart_heading_text"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/price_details" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:id="@+id/cart_item_qty_text_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/price_2_items" />
+
+                        <TextView
+                            android:id="@+id/cart_item_qty_price_text_view"
+                            style="@style/cart_text"
+                            android:text="@string/price" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/discount" />
+
+                        <TextView
+                            android:id="@+id/cart_discount_text_view"
+                            style="@style/cart_text"
+                            android:text="@string/dis_price"
+                            android:textColor="@color/rating_bar" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/buy_more_amp_save_more" />
+
+                        <TextView
+                            android:id="@+id/cart_extra_off_text_view"
+                            style="@style/cart_text"
+                            android:text="@string/extra_dis"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/delivery_charges" />
+
+                        <TextView
+                            style="@style/cart_text"
+                            android:text="@string/delivery_type"
+                            android:textColor="@color/rating_bar" />
+                    </RelativeLayout>
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        app:dividerColor="@color/dividerColor"
+                        app:dividerThickness="1dp" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/cart_heading_text"
+                            android:text="@string/price_details" />
+
+                        <TextView
+                            android:id="@+id/cart_total_text_view"
+                            style="@style/cart_heading_text"
+                            android:layout_alignParentEnd="true"
+                            android:text="@string/price" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:dividerColor="@color/black"
+                    app:dividerThickness="1dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </FrameLayout>

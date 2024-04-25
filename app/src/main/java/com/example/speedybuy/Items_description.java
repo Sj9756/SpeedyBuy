@@ -246,6 +246,15 @@ public class Items_description extends AppCompatActivity {
             if(textSetterCart){
                 add_cart_btn.setText(getString(R.string.go_to_cart));
             }
+            else {
+                add_cart_btn.setText(getString(R.string.add_to_cart));
+            }
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setAdd_cart_btn();
     }
 }

@@ -5,9 +5,15 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".fragments.Fragment_wishlist">
+  <androidx.core.widget.NestedScrollView
+      android:id="@+id/cart_nested_scroll_view"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
 
   <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/recy_wishlist"
+      android:id="@+id/recyclerview_wishlist"
       android:layout_width="match_parent"
       android:layout_height="match_parent"/>
+
+  </androidx.core.widget.NestedScrollView>
 </FrameLayout>

@@ -73,4 +73,17 @@ public class Database_cart extends SQLiteOpenHelper {
         values.put(RATING, rating);
         database.insert(TABLE_NAME, null, values);
     }
+    public double getTotalPrice() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        double totalPrice = 0;
+        String query = "SELECT SUM(price) FROM "+TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            totalPrice = cursor.getDouble(0);
+        }
+
+        cursor.close();
+        return totalPrice;
+    }
 }

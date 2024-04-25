@@ -21,6 +21,7 @@ import com.example.speedybuy.database.Database_wishlist;
 import java.util.ArrayList;
 
 public class Fragment_wishlist extends Fragment {
+    ArrayList<Items_list> itemsLists=new ArrayList<>();
     LottieAnimationView lottieAnimationView;
 
     public static RecyclerView recyclerView_wishlist;
@@ -38,15 +39,29 @@ public class Fragment_wishlist extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_wishlist, container, false);
-        recyclerView_wishlist = view.findViewById(R.id.recy_wishlist);
+        recyclerView_wishlist = view.findViewById(R.id.recyclerview_wishlist);
+        getData();
+        return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+     getData();
+    }
+    private void getData(){
         try(Database_wishlist databaseItems = new Database_wishlist(requireContext())){
-            ArrayList<Items_list> itemsLists = databaseItems.itemsListsArray();
+            itemsLists = databaseItems.itemsListsArray();
             Item_list_recy_adapter ad = new Item_list_recy_adapter(requireContext(),itemsLists,"fragment_wishlist");
-            recyclerView_wishlist.setLayoutManager(new GridLayoutManager(requireContext(), 2));
+            if(itemsLists.isEmpty()){
+                recyclerView_wishlist.setLayoutManager(new GridLayoutManager(requireContext(), 1));
+            }
+            else {
+                recyclerView_wishlist.setLayoutManager(new GridLayoutManager(requireContext(), 2));
+            }
             recyclerView_wishlist.setAdapter(ad);
         }catch (Exception e){
             Log.d("errorDatabae",e.toString());
         }
-        return view;
     }
 }
