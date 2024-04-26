@@ -24,7 +24,6 @@ Wishlist & Cart
 <img src="s11_cart_pre.jpg" width="300" height="600" alt="SpeedyBuy Animation">                 <img src="s12_wishlisht.jpg" width="300" height="600" alt="SpeedyBuy Animation">
 <img src="s13_empty_wishlist.jpg" width="300" height="600" alt="SpeedyBuy Animation">                 <img src="s14_empty_cart.jpg" width="300" height="600" alt="SpeedyBuy Animation">       
 
-
-Wishlist, Cart & Setting 
+Firebase
 ------
-<img src="s13_empty_wishlist.jpg" width="300" height="600" alt="SpeedyBuy Animation">                 <img src="s14_empty_cart.jpg" width="300" height="600" alt="SpeedyBuy Animation">       
+<img src="fire_base_1.png" width="300" height="600" alt="SpeedyBuy Animation">                 <img src="fire_base_2.png" width="300" height="600" alt="SpeedyBuy Animation">       
