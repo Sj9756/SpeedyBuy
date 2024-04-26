@@ -19,10 +19,12 @@ item discription
 ------
 <img src="s8_item_dis.jpg" width="300" height="600" alt="SpeedyBuy Animation">                 <img src="s9_wishlish_added.jpg" width="300" height="600" alt="SpeedyBuy Animation">                 
 
-Wishlist, Cart & Setting 
+Wishlist & Cart  
 ------
-<img src="s11_cart_pre.jpg" width="300" height="600" alt="SpeedyBuy Animation">                 <img src="s12_wishlisht.jpg" width="300" height="600" alt="SpeedyBuy Animation">                 <img src="s15_setting.jpg" width="300" height="600" alt="SpeedyBuy Animation">
+<img src="s11_cart_pre.jpg" width="300" height="600" alt="SpeedyBuy Animation">                 <img src="s12_wishlisht.jpg" width="300" height="600" alt="SpeedyBuy Animation">
+<img src="s13_empty_wishlist.jpg" width="300" height="600" alt="SpeedyBuy Animation">                 <img src="s14_empty_cart.jpg" width="300" height="600" alt="SpeedyBuy Animation">       
+
 
 Wishlist, Cart & Setting 
 ------
-<img src="s13_empty_wishlist.jpg" width="300" height="600" alt="SpeedyBuy Animation">                 <img src="s14_empty_cart.jpg" width="300" height="600" alt="SpeedyBuy Animation">                 <img src="s15_setting.jpg" width="300" height="600" alt="SpeedyBuy Animation">
+<img src="s13_empty_wishlist.jpg" width="300" height="600" alt="SpeedyBuy Animation">                 <img src="s14_empty_cart.jpg" width="300" height="600" alt="SpeedyBuy Animation">       
