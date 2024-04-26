@@ -26,4 +26,4 @@ Wishlist & Cart
 
 Firebase
 ------
-<img src="fire_base_1.png" width="300" height="600" alt="SpeedyBuy Animation">                 <img src="fire_base_2.png" width="300" height="600" alt="SpeedyBuy Animation">       
+<img src="fire_base_1.png" alt="SpeedyBuy Animation">                 <img src="fire_base_2.png"  alt="SpeedyBuy Animation">       
