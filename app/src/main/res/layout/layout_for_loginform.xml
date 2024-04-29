@@ -7,42 +7,32 @@
     android:padding="20dp"
     android:orientation="vertical">
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/el"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/email_hints"
-        app:hintAnimationEnabled="true"
-        app:boxStrokeColor="@color/colorPrimary"
-        app:hintTextColor="@color/colorPrimary">
+        style="@style/TextInputLayout"
+        android:hint="@string/email_hints">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/user_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/login_email_id"
+         style="@style/TextInputEditText"
             android:inputType="text" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/password_TextInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:hint="@string/password"
-        app:endIconMode="password_toggle"
-        app:boxStrokeColor="@color/colorPrimary"
-        app:hintTextColor="@color/colorPrimary">
+        style="@style/TextInputLayout"
+        app:endIconMode="password_toggle">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password_EditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/login_password"
             android:inputType="textPassword"
+            style="@style/TextInputEditText"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
+        android:id="@+id/forget_pass_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
@@ -52,7 +42,7 @@
         android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/login"
+        android:id="@+id/login_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -83,16 +73,19 @@
             android:background="@drawable/ic_facebook" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/bt_sign_in"
+            android:id="@+id/google_sign_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:background="@drawable/ic_google" />
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/register_user"
+        android:background="?attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:padding="10dp"
         android:layout_marginBottom="?attr/actionBarSize"
         android:gravity="center">
         <TextView
@@ -109,6 +102,7 @@
             android:layout_marginStart="10dp"
             android:text="@string/create_account"/>
     </LinearLayout>
+
 </LinearLayout>
 
 
