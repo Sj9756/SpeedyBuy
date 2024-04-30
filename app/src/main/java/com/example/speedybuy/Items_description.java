@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,19 +27,12 @@ import com.example.speedybuy.key.Ikey;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
 
 public class Items_description extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationItemView;
     LinearLayout size_layout;
-    private TextView selectedTextView, selected_size;
+    private TextView selectedTextView;
 
     String fragment_name;
     int position;
@@ -51,8 +43,8 @@ public class Items_description extends AppCompatActivity {
     int id, item_price;
 
 
-   private boolean iconSetter = false;
-   private boolean textSetterCart = false;
+    private boolean iconSetter = false;
+    private boolean textSetterCart = false;
     MaterialToolbar toolbar;
     ImageView product_image_1, product_image_2, product_image_3;
     TextView heading_view, subheading_view, price_view;
@@ -67,17 +59,9 @@ public class Items_description extends AppCompatActivity {
         addActionBar();
         set_content();
         setAdd_cart_btn();
-//        BadgeDrawable badgeWishlist = bottomNavigationItemView.getOrCreateBadge(R.id.navigation_wishlist);
-//        badgeWishlist.setVisible(true);
-//        badgeWishlist.setNumber(10);
 
 
-        add_cart_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                insertData();
-            }
-        });
+        add_cart_btn.setOnClickListener(v -> insertData());
 
 
     }
@@ -113,7 +97,7 @@ public class Items_description extends AppCompatActivity {
         textView.setTextColor(getColor(R.color.white));
         textView.setSelected(true);
         selectedTextView = textView;
-        selected_size = findViewById(R.id.selected_size);  //this is conform size text view Size=?
+        TextView selected_size = findViewById(R.id.selected_size);  //this is conform size text view Size=?
         String size = "Size: " + selectedTextView.getText();
         selected_size.setText(size);
     }
@@ -155,23 +139,25 @@ public class Items_description extends AppCompatActivity {
         add_cart_btn = findViewById(R.id.add_cart_btn);
         buy_btn = findViewById(R.id.buy_btn);
         size_layout = findViewById(R.id.size_layout);
+
     }
 
 
     private void insertData() {
-        if(textSetterCart){
+        if (textSetterCart) {
             Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra("loadFragment", "cart");
             startActivity(intent);
-        }
-        else {
-            try (Database_cart cartItem=new Database_cart(Items_description.this)){
-                cartItem.insertRecord(id,imageUrl,heading_text,subheading_text,item_price,rating_text);
+        } else {
+            try (Database_cart cartItem = new Database_cart(Items_description.this)) {
+                cartItem.insertRecord(id, imageUrl, heading_text, subheading_text, item_price, rating_text);
                 add_cart_btn.setText(getString(R.string.go_to_cart));
-                textSetterCart=true;
-            }catch (Exception e){
-                Log.e("cartItem","Error occurred", e);
+                textSetterCart = true;
+            } catch (Exception e) {
+                Log.e("cartItem", "Error occurred", e);
             }
+
+
         }
     }
 
@@ -240,13 +226,13 @@ public class Items_description extends AppCompatActivity {
         finish();
         return true;
     }
-    private void setAdd_cart_btn(){
-        try (Database_cart databaseCart =new Database_cart(Items_description.this)){
-           textSetterCart= databaseCart.dataExist(id);
-            if(textSetterCart){
+
+    private void setAdd_cart_btn() {
+        try (Database_cart databaseCart = new Database_cart(Items_description.this)) {
+            textSetterCart = databaseCart.dataExist(id);
+            if (textSetterCart) {
                 add_cart_btn.setText(getString(R.string.go_to_cart));
-            }
-            else {
+            } else {
                 add_cart_btn.setText(getString(R.string.add_to_cart));
             }
         }

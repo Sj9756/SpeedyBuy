@@ -17,9 +17,10 @@ import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
-import com.example.speedybuy.Login;
+import com.example.speedybuy.AuthenticationU.Login;
 import com.example.speedybuy.R;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
 
@@ -52,15 +53,21 @@ public class Fragment_setting extends Fragment {
         String emailid=pref.getString("email","example12");
         String url=pref.getString("profile","");
         url=url.replace("s96","s900");
-
         Glide.with(this).load(url).into(profile);
+        if(url.isEmpty()){
+            Glide.with(this).load("https://th.bing.com/th/id/OIP.kcaJsnMsMsFRdU6d1m2v6AHaHa?rs=1&pid=ImgDetMain").into(profile);
+        }
+
         name.setText(Username);
         email_add.setText(emailid);
+
         log_out.setOnClickListener(v -> {
+            FirebaseAuth.getInstance().signOut();
             SharedPreferences.Editor editor=pref.edit();
             editor.putBoolean("flag",false);
             editor.apply();
             Intent intent = new Intent(activity, Login.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             activity.startActivity(intent);
             activity.finish();
         });

@@ -10,4 +10,6 @@ public class Ikey {
     public static final  String PRICE="price";
     public static final  String RATING="rating";
     public static final  String ID="id";
+    public static final  String EMAIL="email";
+    public static final  String PASSWORD="password";
 }

@@ -11,7 +11,7 @@
     <string name="buy">Buy</string>
     <string name="forget_password">Forget Password ?</string>
     <string name="sign_up_text">Or sign up with</string>
-    <string name="email_hints">User id</string>
+    <string name="email_hints">Email id</string>
     <string name="not_register_yet">Not register yet ?</string>
     <string name="create_account">Create Account</string>
     <string name="password">Password</string>
@@ -78,4 +78,18 @@
     <string name="discount">Discount</string>
     <string name="delivery_charges">Delivery Charges</string>
     <string name="your_wishlisht_is_empty">Your wishlist is empty!</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="sign_up">sign up</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="continue_for">Continue</string>
+    <string name="find_your_account">Find your account</string>
+    <string name="enter_your_email_address">Enter your email address.</string>
+    <string name="dialog_title">Enter an email </string>
+    <string name="dialog_body">You\'ll need to enter an email address to continue.</string>
+    <string name="dialog_positive_button">try again</string>
+    <string name="dialog_title_link">Link send successfully!</string>
+    <string name="dialog_subtitle_link">check your mailbox to reset your password</string>
+    <string name="dialog_positive_button_link">OK</string>
+    <string name="dialog_login_fail_title">Unable to log in</string>
+    <string name="dialog_login_fail_sub_title">An unexpected error occurred.Please try logging in again</string>
 </resources>

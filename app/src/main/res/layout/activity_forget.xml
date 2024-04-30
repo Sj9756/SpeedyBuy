@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AuthenticationU.Forget">
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/forget_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@string/find_your_account"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/enter_your_email_address"/>
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputLayout"
+            android:hint="@string/email_hints">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/forget_email_id"
+                style="@style/TextInputEditText"
+                android:inputType="text" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/forget_continue_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:text="@string/continue_for"
+                android:layout_margin="20dp"
+                android:textSize="18sp"
+                android:textAllCaps="false"/>
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/circularProgressIndicator_forget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:indicatorColor="@color/black"
+        android:visibility="gone"
+        android:indeterminate="true" />
+</RelativeLayout>
