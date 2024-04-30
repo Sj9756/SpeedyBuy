@@ -1,5 +1,5 @@
 # SpeedyBuy is a Ecommerce app
 
-# Log in with Google preview
-
-<img src="preview.gif" width="300" height="600" alt="SpeedyBuy Animation">
+log in with google
+------
+<img src="s1.jpg" width="300" height="600" alt="SpeedyBuy Animation">                 <img src="s2.jpg" width="300" height="600" alt="SpeedyBuy Animation">            
