@@ -16,9 +16,11 @@
         android:theme="@style/Theme.SpeedyBuy"
         tools:targetApi="31">
         <activity
+            android:name=".AuthenticationU.Forget"
+            android:exported="false" />
+        <activity
             android:name=".AuthenticationU.SignUp"
-            android:exported="false"/>
-
+            android:exported="false" />
         <activity
             android:name=".Phone_auth"
             android:exported="false" />

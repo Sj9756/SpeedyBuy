@@ -7,15 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
 import android.widget.TextView;
-
 
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.SearchView;
-import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -194,7 +191,7 @@ public class Fragment_home extends Fragment {
                 lottieAnimationView.setVisibility(View.INVISIBLE);
                 lottieAnimationView.setProgress(0);
                 home_fragment_layout.setVisibility(View.VISIBLE);
-                Home_recycler_view_adapter ad = new Home_recycler_view_adapter(item_array, requireContext(), "Fragment_home");
+                Home_recycler_view_adapter ad = new Home_recycler_view_adapter(item_array, requireContext(), "Fragment_home_suggested");
                 LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
                 recycler_view_suggested.setLayoutManager(layoutManager);
                 recycler_view_suggested.setAdapter(ad);
@@ -220,7 +217,7 @@ public class Fragment_home extends Fragment {
                     Items_list itemList = childSnapshot.getValue(Items_list.class);
                     item_array.add(itemList);
                 }
-                Home_recycler_view_adapter ad = new Home_recycler_view_adapter(item_array, requireContext(), "Fragment_home");
+                Home_recycler_view_adapter ad = new Home_recycler_view_adapter(item_array, requireContext(), "Fragment_home_accessories");
                 //  LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
                 recycler_view_trending_products.setLayoutManager(new GridLayoutManager(requireContext(), 3));
                 recycler_view_trending_products.setAdapter(ad);
@@ -246,7 +243,7 @@ public class Fragment_home extends Fragment {
                     Items_list itemList = childSnapshot.getValue(Items_list.class);
                     item_array.add(itemList);
                 }
-                Home_recycler_view_adapter ad = new Home_recycler_view_adapter(item_array, requireContext(), "Fragment_home");
+                Home_recycler_view_adapter ad = new Home_recycler_view_adapter(item_array, requireContext(), "Fragment_home_kids_deal");
                 recycler_view_home_kids_deal.setLayoutManager(new GridLayoutManager(requireContext(), 3));
                 recycler_view_home_kids_deal.setAdapter(ad);
             }
