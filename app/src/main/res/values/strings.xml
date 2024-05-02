@@ -92,4 +92,5 @@
     <string name="dialog_positive_button_link">OK</string>
     <string name="dialog_login_fail_title">Unable to log in</string>
     <string name="dialog_login_fail_sub_title">An unexpected error occurred.Please try logging in again</string>
+    <string name="channel_name">Event Info</string>
 </resources>

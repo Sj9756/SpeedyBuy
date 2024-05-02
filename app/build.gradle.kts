@@ -37,15 +37,19 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+
     implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
     implementation("com.google.firebase:firebase-database")
     implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-messaging")
+    implementation("com.google.firebase:firebase-analytics")
     implementation("com.airbnb.android:lottie:6.4.0")
     implementation("com.google.android.gms:play-services-auth:21.0.0")
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("de.hdodenhof:circleimageview:3.1.0")
     implementation("androidx.activity:activity:1.8.0")
-
+    implementation ("androidx.media:media:1.6.0")
+    implementation ("com.karumi:dexter:6.2.3")
     implementation("androidx.credentials:credentials:1.3.0-alpha03")
     implementation("androidx.credentials:credentials-play-services-auth:1.3.0-alpha03")
     implementation ("com.google.android.libraries.identity.googleid:googleid:1.1.0")
@@ -53,4 +57,5 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
 }

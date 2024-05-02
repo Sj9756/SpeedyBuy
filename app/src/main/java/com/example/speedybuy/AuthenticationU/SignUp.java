@@ -52,7 +52,7 @@ public class SignUp extends AppCompatActivity {
                 String password = Objects.requireNonNull(sign_up_password.getText()).toString();
                 String confirmPassword = s.toString();
                 if (!password.equals(confirmPassword)) {
-                    sign_up_password_confirm.setError("Passwords do not match");
+                    sign_up_password_confirm.setError("password didn't  match");
                 } else {
                     sign_up_password_confirm.setError(null);
 
@@ -87,11 +87,10 @@ public class SignUp extends AppCompatActivity {
                     signUpWithEmail(email,password);
                 }
                 else {
-                    Toast.makeText(SignUp.this, "password didn't  match", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this, "Password didn't  match", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
     }
 
     private void initializeViews() {
