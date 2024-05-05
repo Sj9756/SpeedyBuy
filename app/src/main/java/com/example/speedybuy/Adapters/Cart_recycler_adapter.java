@@ -18,18 +18,15 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 import com.example.speedybuy.Items_description;
 import com.example.speedybuy.R;
 import com.example.speedybuy.database.Database_cart;
-import com.example.speedybuy.fragments.Fragment_cart;
 import com.example.speedybuy.key.Ikey;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 
 class ViewHolderCart extends RecyclerView.ViewHolder {
     //views of cart recycler
@@ -69,7 +66,7 @@ public class Cart_recycler_adapter extends RecyclerView.Adapter<ViewHolderCart> 
     Context context;
     String selected_qty;
 
-    public Cart_recycler_adapter(ArrayList<Items_list> items_array, Context context, String fragment_name, TextView cart_item_qty_text_view, TextView cart_item_qty_price_text_view, TextView cart_total_text_view,LinearLayout price_chart_layout) {
+    public Cart_recycler_adapter(ArrayList<Items_list> items_array, Context context, String fragment_name, TextView cart_item_qty_text_view, TextView cart_item_qty_price_text_view, TextView cart_total_text_view, LinearLayout price_chart_layout) {
         this.items_array = items_array;
         this.context = context;
         qty_array.add(1);
@@ -79,7 +76,7 @@ public class Cart_recycler_adapter extends RecyclerView.Adapter<ViewHolderCart> 
         this.cart_item_qty_text_view = cart_item_qty_text_view;
         this.cart_item_qty_price_text_view = cart_item_qty_price_text_view;
         this.cart_total_text_view = cart_total_text_view;
-        this.price_chart_layout=price_chart_layout;
+        this.price_chart_layout = price_chart_layout;
     }
 
     @NonNull
@@ -126,59 +123,52 @@ public class Cart_recycler_adapter extends RecyclerView.Adapter<ViewHolderCart> 
             holder.cart_price.setText(String.valueOf(currentItem.price));
             String url = currentItem.imageUrl;
             Glide.with(context).load(url).into(holder.cart_image_view);
-            try (Database_cart cart = new Database_cart(context)) {
-                String qty_text_view="Price ("+items_array.size()+" items)";
-                String rate="₹"+cart.getTotalPrice();
-                double total=cart.getTotalPrice()-20-50;
-                String net_total="₹"+total;
-                cart_item_qty_text_view.setText(qty_text_view);
-                cart_item_qty_price_text_view.setText(rate);
-                cart_total_text_view.setText(net_total);
-            }
-            holder.cart_delete_btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    try (Database_cart cart = new Database_cart(context)) {
-                        cart.deleteRecord(currentItem.id);
-                        items_array.remove(holder.getAdapterPosition());
-                        notifyItemRemoved(holder.getAdapterPosition());
-                        String qty_text_view="Price ("+items_array.size()+" items)";
-                        String rate="₹"+cart.getTotalPrice();
-                        double total=cart.getTotalPrice()-20-50;
-                        String net_total="₹"+total;
-                        cart_item_qty_text_view.setText(qty_text_view);
-                        cart_item_qty_price_text_view.setText(rate);
-                        cart_total_text_view.setText(net_total);
-
-                    }
+            updatePriceList();
+            holder.cart_delete_btn.setOnClickListener(v -> {
+                try (Database_cart cart = new Database_cart(context)) {
+                    cart.deleteRecord(currentItem.id);
+                    items_array.remove(holder.getAdapterPosition());
+                    notifyItemRemoved(holder.getAdapterPosition());
+                    updatePriceList();
                 }
             });
-            holder.linear_layout_of_intent.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(context, Items_description.class);
-                    intent.putExtra(Ikey.FRAGMENT, fragment_name);
-                    intent.putExtra(Ikey.POSITION, holder.getAdapterPosition());
-                    intent.putExtra(Ikey.ID, currentItem.id);
-                    intent.putExtra(Ikey.IMG, currentItem.imageUrl);
-                    intent.putExtra(Ikey.HEADING, currentItem.heading);
-                    intent.putExtra(Ikey.SUBHEADING, currentItem.subheading);
-                    intent.putExtra(Ikey.PRICE, currentItem.price);
-                    intent.putExtra(Ikey.RATING, currentItem.setRating);
-                    context.startActivity(intent);
-                }
+            holder.linear_layout_of_intent.setOnClickListener(v -> {
+                Intent intent = new Intent(context, Items_description.class);
+                intent.putExtra(Ikey.FRAGMENT, fragment_name);
+                intent.putExtra(Ikey.POSITION, holder.getAdapterPosition());
+                intent.putExtra(Ikey.ID, currentItem.id);
+                intent.putExtra(Ikey.IMG, currentItem.imageUrl);
+                intent.putExtra(Ikey.HEADING, currentItem.heading);
+                intent.putExtra(Ikey.SUBHEADING, currentItem.subheading);
+                intent.putExtra(Ikey.PRICE, currentItem.price);
+                intent.putExtra(Ikey.RATING, currentItem.setRating);
+                context.startActivity(intent);
             });
-
-
-            LocalDate currentDate = null;
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                currentDate = LocalDate.now();
-                LocalDate newDate = currentDate.plusDays(7);
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E MMM dd");
-                String formattedDate = newDate.format(formatter);
-                holder.cart_delivery_date.setText(String.valueOf(formattedDate));
-            }
+            String formattedDate = setDeliveryDate();
+            holder.cart_delivery_date.setText(String.valueOf(formattedDate));
         }
     }
 
+    private void updatePriceList() {
+        try (Database_cart cart = new Database_cart(context)) {
+            String qty_text_view = "Price (" + items_array.size() + " items)";
+            String rate = "₹" + cart.getTotalPrice();
+            double total = cart.getTotalPrice() - 20 - 50;
+            String net_total = "₹" + total;
+            cart_item_qty_text_view.setText(qty_text_view);
+            cart_item_qty_price_text_view.setText(rate);
+            cart_total_text_view.setText(net_total);
+        }
+    }
+
+    private String setDeliveryDate() {
+        LocalDate currentDate;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            currentDate = LocalDate.now();
+            LocalDate newDate = currentDate.plusDays(7);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E MMM dd");
+            return newDate.format(formatter);
+        }
+        return "";
+    }
 }
